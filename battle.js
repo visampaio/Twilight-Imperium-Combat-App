@@ -149,9 +149,9 @@ window.onload = function() {
     hitTotal = 0;
   }
 
-  document.getElementById("mudar").onclick = function() {
+/* document.getElementById("mudar").onclick = function() {
     dreadHit --;
-  }
+  } */
 
   document.getElementById("dreadImg").onclick = function() {
     dreadShips.pop();
@@ -162,6 +162,68 @@ window.onload = function() {
     }
   }
 
+  document.getElementById("carrierImg").onclick = function() {
+    carrierShips.pop();
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+    if (carrierShips.length < 1) {
+      document.getElementById("carrierImg").style.display = "none"
+      document.getElementById("carrierFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("cruiserImg").onclick = function() {
+    cruiserShips.pop();
+    document.getElementById("cruiserFleet").innerHTML = cruiserShips.length;
+    if (cruiserShips.length < 1) {
+      document.getElementById("cruiserImg").style.display = "none"
+      document.getElementById("cruiserFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("destroyerImg").onclick = function() {
+    destroyerShips.pop();
+    document.getElementById("destroyerFleet").innerHTML = destroyerShips.length;
+    if (destroyerShips.length < 1) {
+      document.getElementById("destroyerImg").style.display = "none"
+      document.getElementById("destroyerFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("fighterImg").onclick = function() {
+    fighterShips.pop();
+    document.getElementById("fighterFleet").innerHTML = fighterShips.length;
+    if (fighterShips.length < 1) {
+      document.getElementById("fighterImg").style.display = "none"
+      document.getElementById("fighterFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("groundImg").onclick = function() {
+    groundShips.pop();
+    document.getElementById("groundFleet").innerHTML = groundShips.length;
+    if (groundShips.length < 1) {
+      document.getElementById("groundImg").style.display = "none"
+      document.getElementById("groundFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("pdsImg").onclick = function() {
+    pdsShips.pop();
+    document.getElementById("pdsFleet").innerHTML = pdsShips.length;
+    if (pdsShips.length < 1) {
+      document.getElementById("pdsImg").style.display = "none"
+      document.getElementById("pdsFleet").style.display = "none";
+    }
+  }
+
+  document.getElementById("warImg").onclick = function() {
+    warsunShips.pop();
+    document.getElementById("warFleet").innerHTML = warsunShips.length;
+    if (warsunShips.length < 1) {
+      document.getElementById("warImg").style.display = "none"
+      document.getElementById("warFleet").style.display = "none";
+    }
+  }
 
 }
 
