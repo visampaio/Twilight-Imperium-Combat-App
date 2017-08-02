@@ -65,7 +65,8 @@ window.onload = function() {
     var newShip = new dreadnought(dreadHit);
     dreadShips.push(newShip);
     console.log(dreadShips);
-    document.getElementById("dreadImg").style.display = "block";
+    document.getElementById("dreadImg").style.display = "inline";
+    document.getElementById("dreadFleet").style.display = "inline";
     document.getElementById("dreadFleet").innerHTML = dreadShips.length;
   }
 
@@ -73,6 +74,63 @@ window.onload = function() {
     var newShip = new carrier(carrierHit);
     carrierShips.push(newShip);
     console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
+  }
+
+  document.getElementById("createCarrier").onclick = function() {
+    var newShip = new carrier(carrierHit);
+    carrierShips.push(newShip);
+    console.log(carrierShips);
+    document.getElementById("carrierImg").style.display = "inline";
+    document.getElementById("carrierFleet").style.display = "inline";
+    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
   }
 
   document.getElementById("makeAttack").onclick = function() {
