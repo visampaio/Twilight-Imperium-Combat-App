@@ -1,3 +1,32 @@
-#dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg {
+#dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg, #warImgDamage, #dreadImgDamage, #carrierImgDamage {
   display: none;
+}
+
+#hitsMessage {
+
+font-size: 80px;
+margin: 0 auto;
+text-align: center;
+
+}
+
+figure {
+  float: left;
+  margin: 0;
+  padding: 0;
+
+}
+
+#overlay {
+  position:absolute;
+  width: 100%;
+  text-align: center;
+  color: green;
+  font-family: sans-serif;
+
+}
+
+.center {
+  width: 100%;
+  text-align: center;
 }
