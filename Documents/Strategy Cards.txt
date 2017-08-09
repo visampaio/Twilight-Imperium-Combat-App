@@ -1,0 +1,5 @@
+=== Warfare 2
+
+* Your ships get +1 on all combat rolls while having the high alert token;
+
+=== 

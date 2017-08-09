@@ -1,0 +1,57 @@
+============= Aplicativo em si
+
+== ALTA PRIORIDADE
+
+-> Tela inicial com a capa do Twilight Imperium
+-> Interface de facil navegação
+-> Segurança de risco: usuario seleciona unidades que quer matar e clica nalgum botão para confirmar eliminação delas
+-> Sound effects (Quando adicionando e removendo unidades, fazer um "boop" curto e rapido). Barulho de combate (ou de dados rolando) também quando o jogador clicar pra iniciar batalha.
+
+== MEDIA PRIORIDADE
+
+-> Suporte a teclado ou joystick para navegação (Usar setas do teclado/d-pad para selecionar e remover unidades e começar combate)
+
+== BAIXA PRIORIDADE
+
+-> Animação de quando a unidade é destruída
+-> Versão para Celular (Individual), Tablet e PC (Multiplos combates)
+-> Tutorial de como usar o app
+
+== WOULD BE NICE IF
+
+-> Possibilidade de criação de perfis de usuarios
+-> Soundtrack
+
+
+
+
+=========================== Sistema de Combate
+
+--> Ter um botão / aba onde você escolhe quais são as tecnologias que você já tem, e qual é a sua raça que está jogando (ajustar a cor das unidades baseado na raça, e aplicar o pré-set de combate.)
+
+--> Ter botão / aba para adicionar bonus (negativos ou positivos) para unidades especificas por conta de efeitos terceiros que não estão relacionados a techs ou raças. (Ex: o efeito defensivo dos Xxcha Kingdom, ou alguma politica, etc)
+
+--> Na tela de combate, botões para o jogador definir qual tipo de combate vai acontecer 1, 2 ou 3. -Adicionar um botão em cada tela que permita a transição para a próxima OU finalizar ali. (1 -> 2 -> 3)
+
+
+===== [1] PDS + Deep Space Cannon
+
+-> Escolher quantos PDS estão no alcance;
+-> Rolagem simples aplicando apenas chances de acerto dos PDS.
+
+===== Space Combat
+
+-> Escolher quantas de cada unidade vao participar no combate;
+-> Botão de pré-combate para efeitos que aconteçam antes do combate total;
+-> Botão de rolagem, que diz quantos acertos foram realizados;
+-> Clicar em uma unidade remove ela.
+-> Botão de continuar combate OU finalizar combate;
+-> Botão de pós-combate;
+
+===== Invasion Combat
+
+-> Escolher quantas de cada unidade vao participar no combate;
+-> Botão de rolagem, que diz quantos acertos foram realizados;
+-> Clicar em uma unidade remove ela.
+-> Botão de continuar combate OU finalizar combate;
+-> Botão de pós-combate;

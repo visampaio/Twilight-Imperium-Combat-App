@@ -1,0 +1,19 @@
+= Dice range from 1-10
+= Number equal or higher = hit;
+
+Dreadnought: 5
+Carrier: 9
+Cruiser: 7
+Destroyer: 9
+Fighter: 9
+War Sun: 3 (x3 <- rolls three dice)
+Ground Force: 8 (only participate on ground combats against other ground forces)
+PDS: 6 (Only attack once, before space combat happens) < falta confirmar
+
+
+Special abilities:
+
+Dreadnought and War Sun: Bombardment (Before Invasion [after space combat]: 1 die for Dreadnought and 3 for Warsun . Each hit destroy a Ground Force)
+
+Destroyer: Anti-Fighter Barrage (Pre-combat: Roll 2 dice per destroyer. Each hit destroy a fighter)
+

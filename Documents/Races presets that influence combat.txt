@@ -1,0 +1,28 @@
+=== Universities of Jol-nar
+
+* You receive -1 on your combat rolls during all space battles and invasion combat
+* You may spend a command counter from your strategy allocation to re-roll any of your die rolls
+
+=== The L1Z1X Mindnet
+
+* Your Dreadnought units receive +1 during Space Battles, and your ground force units receive +1 when attacking during Invasion Combat.
+
+=== The Barony of Letnev
+
+* Before any Space Battle or Invasion Combat Round, you may spend 2 trade goods to give all your spaceships +1, or all your ground forces +2 on their combat rolls for that combat.
+
+=== The Naalu Collective
+
+* All Naalu fighters receive +1 on combat rolls during space battles.
+
+=== Sardakk N'orr
+
+* You receive +1 to all your Combat rolls during space battles and invasion combat rounds.
+
+== The Xxcha Kingdom
+
+* Your opponents receive -1 on all combat rolls against you during the first combat round of all space battles and invasion combats
+
+== The Yin Brotherhood
+
+* Before an Invasion Combat in which you are the attacker begins, you may roll 1 die. On a 5+ your opponent loses 1 ground Force and you gain 1 ground force.
