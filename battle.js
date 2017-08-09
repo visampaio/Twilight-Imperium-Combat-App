@@ -141,6 +141,8 @@ window.onload = function() {
     document.getElementById("warFleet").innerHTML = warnormal;
   }
 
+//  runs attack() for each type of ship and shows total successful hits
+
   document.getElementById("makeAttack").onclick = function() {
     attack(dreadShips);
     attack(carrierShips);
@@ -163,6 +165,28 @@ window.onload = function() {
         }, 1000);
 
   }
+
+// Runs attack() for Dreadnaughts and Warsuns and show total successful hits
+
+  document.getElementById("makeBombardment").onclick = function() {
+    attack(dreadShips);
+    attack(warsunShips);
+    console.log("Hit totais:" + hitTotal);
+    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
+    hitTotal = 0;
+  }
+
+  // Runs attack() for Dreadnaughts and Warsuns and show total successful hits
+
+    document.getElementById("antiFighter").onclick = function() {
+      attack(destroyerShips);
+      attack(destroyerShips);
+      console.log("Hit totais:" + hitTotal);
+      document.getElementById("hitsMessage").style.visibility = "visible"
+      document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
+      hitTotal = 0;
+    }
 
 // Deletes all arrays of ships and remove them from the screen. Loop adds all IDs of images into a big array and then change the display to "none" one by one. //
     document.getElementById("resetAttack").onclick = function() {
