@@ -213,6 +213,15 @@ window.onload = function() {
     }
   }
 
+  document.getElementById("cybernetics").onchange = function() {
+    if (this.checked) {
+      fighterHit--;
+    }
+    else {
+      fighterHit++;
+    }
+  }
+
 // Remove Ships that were created by clicking on them //
   document.getElementById("dreadImg").onclick = function() {
     dreadnormal--;
