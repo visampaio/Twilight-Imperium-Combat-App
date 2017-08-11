@@ -56,7 +56,14 @@ var dreaddamage = 0;
 var warnormal = 0;
 var wardamage = 0;
 
+var round = 0;
+
 var turrets = false;
+var cannon = false;
+var magenground = false;
+var groundRez = false;
+var pdsReroll = false;
+var resurrect = 0;
 
 // Essa seção é das arrays da quantidade de naves estão sendo enviadas para combate //
 
@@ -138,6 +145,14 @@ window.onload = function() {
 
 //  runs attack() for each type of ship and shows total successful hits
   document.getElementById("makeAttack").onclick = function() {
+
+    if (round == 0 && cannon == true) {
+          attack(dreadShips);
+          document.getElementById("preDread").style.display = "inline"
+          document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
+          hitTotal = 0;
+    }
+
     attack(dreadShips);
     attack(carrierShips);
     attack(cruiserShips);
@@ -148,7 +163,10 @@ window.onload = function() {
     attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
     document.getElementById("hitsMessage").style.visibility = "visible"
-    document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
+    document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
+    round++;
+    document.getElementById("currentRound").style.display = "inline"
+    document.getElementById("currentRound").innerHTML = ("Round: " + round);
     hitTotal = 0;
 
     // Disables attack button to provide visual feedback and prevent accidental clicks. //
@@ -157,6 +175,11 @@ window.onload = function() {
         setTimeout(function() {
            input.disabled = false;
         }, 1000);
+  }
+
+//If you win an Invasion Combat, place one Ground Force for every force lost (both sides on a roll +6) on the planet from your reinforcements
+  document.getElementById("dacxive").onclick = function() {
+//jogador entra o numero de tropas que morreu. Rola um D10 x esse numero, pra cada random >= 6, contador recebe++. Displaya na tela "Numero de tropas revividas: contador"
   }
 
 // Runs attack() for Dreadnaughts and Warsuns and show total successful hits
@@ -191,6 +214,7 @@ window.onload = function() {
     tech[i].onclick = function() {reset();}
   }
 
+//Cruisers and Destroyers receive +1 in all combats;
   document.getElementById("assaultLaser").onchange = function() {
     if (this.checked) {
       cruiserHit--;
@@ -202,6 +226,7 @@ window.onload = function() {
     }
   }
 
+//Destroyers receive +2 and roll additional die for anti-fighter barrager
   document.getElementById("automatedDefence").onchange = function() {
     if (this.checked) {
       destroyerHit -= 2;
@@ -213,7 +238,58 @@ window.onload = function() {
     }
   }
 
+//Fighters receive +1 in all combat rolls;
   document.getElementById("cybernetics").onchange = function() {
+    if (this.checked) {
+      fighterHit--;
+    }
+    else {
+      fighterHit++;
+    }
+  }
+
+//PDS get one re-roll for each missed combat roll;
+  document.getElementById("graviton").onchange = function() {
+    if (this.checked) {
+      pdsReroll = true;
+    }
+    else {
+      pdsReroll = false;
+    }
+  }
+
+  document.getElementById("magen").onchange = function() {
+    if (this.checked) {
+      pdsHit--;
+      magenground = true;
+    }
+    else {
+      pdsHit++;
+      magenground = false;
+    }
+
+  }
+
+  document.getElementById("synthesis").onchange = function() {
+   if (this.checked) {
+     groundforceHit--;
+     groundRez = true;
+   }
+   else {
+    groundforceHit++;
+    groundRez = false;
+   }
+}
+  document.getElementById("assaultCannon").onchange = function() {
+    if (this.checked) {
+      cannon = true;
+    }
+    else {
+      cannon = false;
+    }
+  }
+
+  document.getElementById("advancedFighters").onchange = function() {
     if (this.checked) {
       fighterHit--;
     }
@@ -277,6 +353,15 @@ window.onload = function() {
   }
   document.getElementById("groundImg").onclick = function() {
     groundShips.pop();
+    if (groundRez == true) {
+      document.getElementById("resurrectedTroops").style.display = "inline";
+      document.getElementById("resurrectedTroops").innerHTML = ("Tropas Revividas : " + resurrect);
+      var diceValue = Math.floor(Math.random() * (10)) + 1;
+      if (diceValue >= 5) {
+          resurrect++;
+          document.getElementById("resurrectedTroops").innerHTML = ("Tropas Revividas : " + resurrect);
+    }
+  }
     document.getElementById("groundFleet").innerHTML = groundShips.length;
     if (groundShips.length < 1) {
       document.getElementById("groundImg").style.display = "none"
@@ -334,10 +419,11 @@ var attack = function(ships){
 }
 
 var reset = function(){
-  var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage");
+  var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops");
       for (var i=0; i < ships.length; i++) {
         ships[i].style.display = "none";
       }
+    document.getElementById("hitsMessage").style.visibility = "hidden"
     dreadShips = [];
     carrierShips = [];
     cruiserShips = [];
@@ -350,4 +436,6 @@ var reset = function(){
     dreaddamage = 0;
     warnormal = 0;
     wardamage = 0;
+    round = 0;
+    resurrect = 0;
 }

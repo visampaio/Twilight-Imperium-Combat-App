@@ -1,12 +1,12 @@
-== Hylar V Assault Laser:
+== Hylar V Assault Laser: [OK]
 
 Cruisers and Destroyers receive +1 in all combats;
 
-== Automated Defence Turrets
+== Automated Defence Turrets [OK]
 
 Destroyers receive +2 and roll additional die for anti-fighter barrager
 
-== Cybernetics
+== Cybernetics [OK]
 
 Fighters receive +1 in all combat rolls;
 
@@ -22,7 +22,7 @@ PDS receive +1 on all combat rolls. Ground forces with PDS get +1 on all combat 
 
 Ground forces receive +1 during invasion combat. When destroyed, roll +5 to return to home system
 
-== Maneuvering Jets
+== Maneuvering Jets *
 
 Opponents receive -1 on all PDS rolls, -2 from adjacent systems. You receive -1 Space Mine Rolls.
 
@@ -34,10 +34,6 @@ Dreadnoughts get one free shot before any Space battle
 
 If you win an Invasion Combat, place one Ground Force for every force lost (both sides on a roll +6) on the planet from your reinforcements
 
-== GRAVITON NEGATOR
-
-Fighters may participate in Invasion Combat (return to space after combat)
-
-== ADVANCED FIGHTERS
+== ADVANCED FIGHTERS [OK]
 
 Fighters receive +1 on all combat rolls
