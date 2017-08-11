@@ -146,7 +146,7 @@ window.onload = function() {
 //  runs attack() for each type of ship and shows total successful hits
   document.getElementById("makeAttack").onclick = function() {
 
-    if (round == 0 && cannon == true) {
+    if (dreadShips.length > 0 && round == 0 && cannon == true) {
           attack(dreadShips);
           document.getElementById("preDread").style.display = "inline"
           document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
@@ -177,9 +177,18 @@ window.onload = function() {
         }, 1000);
   }
 
-//If you win an Invasion Combat, place one Ground Force for every force lost (both sides on a roll +6) on the planet from your reinforcements
   document.getElementById("dacxive").onclick = function() {
-//jogador entra o numero de tropas que morreu. Rola um D10 x esse numero, pra cada random >= 6, contador recebe++. Displaya na tela "Numero de tropas revividas: contador"
+    resurrect = 0;
+    var casualties = prompt("Please enter the number of dead troops from both sides", "0");
+    for (var i = 0; i < casualties; i++) {
+      var diceValue = Math.floor(Math.random() * (10)) + 1;
+      if (diceValue >= 6) {
+          resurrect++;
+        }
+          }
+          document.getElementById("resurrectedTroops").style.display = "inline";
+          document.getElementById("resurrectedTroops").innerHTML = ("Tropas Revividas : " + resurrect);
+          resurrect = 0;
   }
 
 // Runs attack() for Dreadnaughts and Warsuns and show total successful hits
@@ -214,7 +223,6 @@ window.onload = function() {
     tech[i].onclick = function() {reset();}
   }
 
-//Cruisers and Destroyers receive +1 in all combats;
   document.getElementById("assaultLaser").onchange = function() {
     if (this.checked) {
       cruiserHit--;
@@ -226,7 +234,6 @@ window.onload = function() {
     }
   }
 
-//Destroyers receive +2 and roll additional die for anti-fighter barrager
   document.getElementById("automatedDefence").onchange = function() {
     if (this.checked) {
       destroyerHit -= 2;
@@ -238,7 +245,6 @@ window.onload = function() {
     }
   }
 
-//Fighters receive +1 in all combat rolls;
   document.getElementById("cybernetics").onchange = function() {
     if (this.checked) {
       fighterHit--;
@@ -248,7 +254,6 @@ window.onload = function() {
     }
   }
 
-//PDS get one re-roll for each missed combat roll;
   document.getElementById("graviton").onchange = function() {
     if (this.checked) {
       pdsReroll = true;

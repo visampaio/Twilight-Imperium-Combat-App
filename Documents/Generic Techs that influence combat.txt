@@ -18,7 +18,7 @@ PDS get one re-roll for each missed combat roll;
 
 PDS receive +1 on all combat rolls. Ground forces with PDS get +1 on all combat rolls during invasion combat
 
-== Gen Synthesis 
+== Gen Synthesis [OK]
 
 Ground forces receive +1 during invasion combat. When destroyed, roll +5 to return to home system
 
@@ -26,11 +26,11 @@ Ground forces receive +1 during invasion combat. When destroyed, roll +5 to retu
 
 Opponents receive -1 on all PDS rolls, -2 from adjacent systems. You receive -1 Space Mine Rolls.
 
-== Assault Cannon
+== Assault Cannon [OK]
 
 Dreadnoughts get one free shot before any Space battle
 
-== Dacxive Animators
+== Dacxive Animators [OK]
 
 If you win an Invasion Combat, place one Ground Force for every force lost (both sides on a roll +6) on the planet from your reinforcements
 

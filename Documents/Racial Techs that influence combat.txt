@@ -1,0 +1,13 @@
+== The Federation of Sol
+
+Mark II Advanced Carriers (4)  Carriers may carry eight units and gain sustain damage.
+
+Spec Ops Training (5)  Each time you roll a 1 during Invasion Combat, you may reroll the die. You must use the second result.
+
+== The Sardakk N’orr
+
+At the end of a round of Invasion Combat, roll one die for each casualty you take. For each 10 you roll, your opponent must immediately take one casualty.
+
+== The Brotherhood of Yin
+
+Use your racial ability twice each ground combat.
