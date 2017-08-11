@@ -177,6 +177,7 @@ window.onload = function() {
         }, 1000);
   }
 
+// Tries to revive troops based on prompt number
   document.getElementById("dacxive").onclick = function() {
     resurrect = 0;
     var casualties = prompt("Please enter the number of dead troops from both sides", "0");
@@ -308,7 +309,8 @@ window.onload = function() {
     dreadnormal--;
     document.getElementById("dreadFleet").innerHTML = dreadnormal;
     dreaddamage++;
-    document.getElementById("dreadImgDamage").style.display = "inline"
+    document.getElementById("dreadImgDamage").style.display = "inline";
+    document.getElementById("dreadFleetDamage").style.display = "inline";
     document.getElementById("dreadFleetDamage").innerHTML = dreaddamage;
     if (dreadnormal < 1) {
       document.getElementById("dreadImg").style.display = "none"
@@ -385,7 +387,8 @@ window.onload = function() {
     warnormal--;
     document.getElementById("warFleet").innerHTML = warnormal;
     wardamage++;
-    document.getElementById("warImgDamage").style.display = "inline"
+    document.getElementById("warImgDamage").style.display = "inline";
+    document.getElementById("warFleetDamage").style.display = "inline";
     document.getElementById("warFleetDamage").innerHTML = wardamage;
     if (warnormal < 1) {
       document.getElementById("warImg").style.display = "none"
