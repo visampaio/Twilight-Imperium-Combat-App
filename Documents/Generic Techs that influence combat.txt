@@ -14,7 +14,7 @@ Fighters receive +1 in all combat rolls;
 
 PDS get one re-roll for each missed combat roll;
 
-== Magen Defense Grid
+== Magen Defense Grid [OK]
 
 PDS receive +1 on all combat rolls. Ground forces with PDS get +1 on all combat rolls during invasion combat
 

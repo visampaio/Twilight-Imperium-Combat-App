@@ -147,10 +147,16 @@ window.onload = function() {
   document.getElementById("makeAttack").onclick = function() {
 
     if (dreadShips.length > 0 && round == 0 && cannon == true) {
-          attack(dreadShips);
-          document.getElementById("preDread").style.display = "inline"
-          document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
-          hitTotal = 0;
+      attack(dreadShips);
+      document.getElementById("preDread").style.display = "inline"
+      document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
+      hitTotal = 0;
+    }
+
+    if (pdsShips.length > 0 && magenground) {
+      for (var i=0; i < groundShips.length; i++) {
+        groundShips[i].battle --;
+      }
     }
 
     attack(dreadShips);
@@ -168,6 +174,12 @@ window.onload = function() {
     document.getElementById("currentRound").style.display = "inline"
     document.getElementById("currentRound").innerHTML = ("Round: " + round);
     hitTotal = 0;
+
+    if (pdsShips.length > 0 && magenground) {
+      for (var i=0; i < groundShips.length; i++) {
+        groundShips[i].battle ++;
+      }
+    }
 
     // Disables attack button to provide visual feedback and prevent accidental clicks. //
     var input = this;
