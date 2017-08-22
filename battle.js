@@ -230,8 +230,8 @@ window.onload = function() {
 // Deletes all arrays of ships and remove them from the screen. Loop adds all IDs of images into a big array and then change the display to "none" one by one. //
   document.getElementById("resetAttack").onclick = function() {reset();}
 
-// Techs
-  var tech = document.querySelectorAll("input[type='checkbox']");
+/////// Techs
+  var tech = document.querySelectorAll(".tech input[type='checkbox']");
   for (var i=0; i < tech.length; i++) {
     tech[i].onclick = function() {reset();}
   }
@@ -316,7 +316,9 @@ window.onload = function() {
     }
   }
 
-// Remove Ships that were created by clicking on them //
+/////// Races
+
+/////// Remove Ships that were created by clicking on them //
   document.getElementById("dreadImg").onclick = function() {
     dreadnormal--;
     document.getElementById("dreadFleet").innerHTML = dreadnormal;
@@ -418,8 +420,6 @@ window.onload = function() {
   }
 
 }
-
-
 
 var attack = function(ships){
   var hitCount = 0;
