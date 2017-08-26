@@ -214,7 +214,7 @@ window.onload = function() {
     hitTotal = 0;
   }
 
-// Runs attack() for Dreadnaughts and Warsuns and show total successful hits
+// Runs attack() for Destroyers and show total successful hits
   document.getElementById("antiFighter").onclick = function() {
     attack(destroyerShips);
     attack(destroyerShips);
@@ -231,7 +231,7 @@ window.onload = function() {
   document.getElementById("resetAttack").onclick = function() {reset();}
 
 /////// Techs
-  var tech = document.querySelectorAll(".tech input[type='checkbox']");
+  var tech = document.querySelectorAll(".tech input");
   for (var i=0; i < tech.length; i++) {
     tech[i].onclick = function() {reset();}
   }
@@ -317,6 +317,38 @@ window.onload = function() {
   }
 
 /////// Races
+
+document.getElementById("naaluCollective").onchange = function() {
+  if (this.checked) {
+    fighterHit--;
+  }
+  else {
+    fighterHit++;
+  }
+}
+
+document.getElementById("sardakkNorr").onchange = function() {
+  if (this.checked) {
+    dreadHit--;
+    carrierHit--;
+    cruiserHit--;
+    destroyerHit--;
+    fighterHit--;
+    groundforceHit--;
+    pdsHit--;
+    warsunHit--;
+  }
+  else {
+    dreadHit++;
+    carrierHit++;
+    cruiserHit++;
+    destroyerHit++;
+    fighterHit++;
+    groundforceHit++;
+    pdsHit++;
+    warsunHit++;
+  }
+}
 
 /////// Remove Ships that were created by clicking on them //
   document.getElementById("dreadImg").onclick = function() {

@@ -11,11 +11,11 @@
 
 * Before any Space Battle or Invasion Combat Round, you may spend 2 trade goods to give all your spaceships +1, or all your ground forces +2 on their combat rolls for that combat.
 
-=== The Naalu Collective
+=== The Naalu Collective [OK]
 
 * All Naalu fighters receive +1 on combat rolls during space battles.
 
-=== Sardakk N'orr
+=== Sardakk N'orr [OK]
 
 * You receive +1 to all your Combat rolls during space battles and invasion combat rounds.
 
