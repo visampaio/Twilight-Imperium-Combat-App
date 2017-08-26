@@ -317,6 +317,10 @@ window.onload = function() {
   }
 
 /////// Races
+var race = document.querySelectorAll(".race input");
+for (var i=0; i < race.length; i++) {
+  race[i].onclick = function() {totalReset();};
+}
 
 document.getElementById("naaluCollective").onchange = function() {
   if (this.checked) {
@@ -490,4 +494,20 @@ var reset = function(){
     wardamage = 0;
     round = 0;
     resurrect = 0;
+}
+
+var totalReset = function (){
+  reset();
+  var tech = document.querySelectorAll(".tech input");
+  for (var i=0; i < tech.length; i++) {
+    tech[i].checked = false;
+  }
+  dreadHit = 5;
+  carrierHit = 9;
+  cruiserHit = 7;
+  destroyerHit = 9;
+  fighterHit = 9;
+  warsunHit = 3;
+  groundforceHit = 8;
+  pdsHit = 6;
 }

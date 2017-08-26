@@ -42,12 +42,12 @@ figure {
 
 .switch input {display:none;}
 
-div.tech {
+div.tech, div.race {
   width: 80px;
   display: inline-block;
 }
 
-.tech:hover {background-color: #D3D3D3;}
+.tech:hover, .race:hover {background-color: #D3D3D3;}
 
 .slider {
   position: absolute;
