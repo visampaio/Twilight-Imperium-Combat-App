@@ -10,7 +10,7 @@ Destroyers receive +2 and roll additional die for anti-fighter barrager
 
 Fighters receive +1 in all combat rolls;
 
-== Graviton Laser System
+== Graviton Laser System [OK]
 
 PDS get one re-roll for each missed combat roll;
 

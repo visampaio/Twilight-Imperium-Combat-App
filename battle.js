@@ -175,6 +175,8 @@ window.onload = function() {
     attack(pdsShips);
     attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
+
+    if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
     document.getElementById("hitsMessage").style.visibility = "visible"
     document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
     round++;
@@ -194,6 +196,8 @@ window.onload = function() {
         setTimeout(function() {
            input.disabled = false;
         }, 1000);
+
+    document.getElementById("reroll").disabled = false;
   }
 
 // Tries to revive troops based on prompt number
@@ -225,7 +229,7 @@ window.onload = function() {
   document.getElementById("antiFighter").onclick = function() {
     attack(destroyerShips);
     attack(destroyerShips);
-    if (turrets == true) {
+    if (turrets) {
       attack(destroyerShips);
     }
     console.log("Hit totais:" + hitTotal);
@@ -248,6 +252,7 @@ window.onload = function() {
     rerollAttack(warsunShips);
     document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
     hitTotal = 0;
+    this.disabled = true;
   }
 
 /////// Techs
@@ -469,6 +474,9 @@ document.getElementById("sardakkNorr").onchange = function() {
 }
 
 var attack = function(ships){
+  if (ships.length > 0) {
+    ships[0].miss = 0;
+  }
   var hitCount = 0;
   for (var i=0; i < ships.length; i++) {
     var reroll = true;
@@ -477,15 +485,7 @@ var attack = function(ships){
       if (diceValue >= ships[i].battle) {
           hitCount ++;
           hitTotal ++;
-    //      reroll = true;
         }
-    /*  else {
-          if (document.getElementById("graviton").checked && reroll) {
-            j--;
-            reroll = false;
-          }
-        }
-         */
         else {
           ships[0].miss ++;
         }
@@ -537,16 +537,16 @@ var totalReset = function (){
 var rerollAttack = function(ships){
   var hitCount = 0;
   if (ships.length > 0) {
-  for (var i=0; i < ships[0].miss; i++) {
-    var diceValue = Math.floor(Math.random() * (10)) + 1;
-    if (diceValue >= ships[i].battle) {
-        hitCount ++;
-        hitTotal ++;
+    for (var i=0; i < ships[0].miss; i++) {
+      var diceValue = Math.floor(Math.random() * (10)) + 1;
+      if (diceValue >= ships[0].battle) {
+          hitCount ++;
+          hitTotal ++;
+          ships[0].miss--;
+      }
+      console.log("valor de batalha" + ships[i].battle);
+      console.log("dado re-rolado" + diceValue);
     }
-    console.log("valor de batalha" + ships[i].battle);
-    console.log("dado" + diceValue);
+    console.log("Hits:" + hitCount);
   }
-  console.log("Hits:" + hitCount);
-  ships[0].miss = 0;
-}
 }
