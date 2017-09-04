@@ -358,7 +358,10 @@ document.getElementById("sardakkNorr").onchange = function() {
     pdsHit--;
     warsunHit--;
   }
-  else {
+}
+
+document.getElementById("universitiesJolnar").onchange = function() {
+  if (this.checked) {
     dreadHit++;
     carrierHit++;
     cruiserHit++;
@@ -367,6 +370,7 @@ document.getElementById("sardakkNorr").onchange = function() {
     groundforceHit++;
     pdsHit++;
     warsunHit++;
+    document.getElementById("reroll").style.display = "inline";
   }
 }
 
@@ -498,24 +502,29 @@ var attack = function(ships){
 
 var reset = function(){
   var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops");
-      for (var i=0; i < ships.length; i++) {
-        ships[i].style.display = "none";
-      }
-    document.getElementById("hitsMessage").style.visibility = "hidden"
-    dreadShips = [];
-    carrierShips = [];
-    cruiserShips = [];
-    destroyerShips = [];
-    fighterShips = [];
-    warsunShips = [];
-    groundShips = [];
-    pdsShips = [];
-    dreadnormal = 0;
-    dreaddamage = 0;
-    warnormal = 0;
-    wardamage = 0;
-    round = 0;
-    resurrect = 0;
+    for (var i=0; i < ships.length; i++) {
+      ships[i].style.display = "none";
+    }
+  var techs = document.getElementsByClassName("raceTech");
+    for (var i=0; i< techs.length; i++) {
+      techs[i].style.display = "none";
+    }
+
+  document.getElementById("hitsMessage").style.visibility = "hidden"
+  dreadShips = [];
+  carrierShips = [];
+  cruiserShips = [];
+  destroyerShips = [];
+  fighterShips = [];
+  warsunShips = [];
+  groundShips = [];
+  pdsShips = [];
+  dreadnormal = 0;
+  dreaddamage = 0;
+  warnormal = 0;
+  wardamage = 0;
+  round = 0;
+  resurrect = 0;
 }
 
 var totalReset = function (){
