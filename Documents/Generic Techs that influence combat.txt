@@ -24,7 +24,7 @@ Ground forces receive +1 during invasion combat. When destroyed, roll +5 to retu
 
 == Maneuvering Jets *
 
-Opponents receive -1 on all PDS rolls, -2 from adjacent systems. You receive -1 Space Mine Rolls.
+Opponents receive -1 on all PDS rolls, -2 from adjacent systems.
 
 == Assault Cannon [OK]
 

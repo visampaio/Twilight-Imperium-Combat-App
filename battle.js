@@ -3,41 +3,49 @@
 function dreadnought(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function carrier(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function cruiser(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function destroyer(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function fighter(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function warsun(battle) {
     this.battle = battle;
     this.dice = 3;
+    this.miss = 0;
 }
 
 function groundforce(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 function PDS(battle) {
     this.battle = battle;
     this.dice = 1;
+    this.miss = 0;
 }
 
 // Essa seção é responsavel por definir qual o valor de combate inicial de cada nave. Ta aqui fora pra permitir modificações desses valores por conta de efeitos que podem ser invocados //
@@ -62,7 +70,6 @@ var turrets = false;
 var cannon = false;
 var magenground = false;
 var groundRez = false;
-var pdsReroll = false;
 var resurrect = 0;
 
 // Essa seção é das arrays da quantidade de naves estão sendo enviadas para combate //
@@ -230,6 +237,19 @@ window.onload = function() {
 // Deletes all arrays of ships and remove them from the screen. Loop adds all IDs of images into a big array and then change the display to "none" one by one. //
   document.getElementById("resetAttack").onclick = function() {reset();}
 
+  document.getElementById("reroll").onclick = function() {
+    rerollAttack(dreadShips);
+    rerollAttack(carrierShips);
+    rerollAttack(cruiserShips);
+    rerollAttack(destroyerShips);
+    rerollAttack(fighterShips);
+    rerollAttack(groundShips);
+    rerollAttack(pdsShips);
+    rerollAttack(warsunShips);
+    document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
+    hitTotal = 0;
+  }
+
 /////// Techs
   var tech = document.querySelectorAll(".tech input");
   for (var i=0; i < tech.length; i++) {
@@ -264,15 +284,6 @@ window.onload = function() {
     }
     else {
       fighterHit++;
-    }
-  }
-
-  document.getElementById("graviton").onchange = function() {
-    if (this.checked) {
-      pdsReroll = true;
-    }
-    else {
-      pdsReroll = false;
     }
   }
 
@@ -460,16 +471,27 @@ document.getElementById("sardakkNorr").onchange = function() {
 var attack = function(ships){
   var hitCount = 0;
   for (var i=0; i < ships.length; i++) {
+    var reroll = true;
     for (var j=0; j < ships[i].dice; j++) {
       var diceValue = Math.floor(Math.random() * (10)) + 1;
       if (diceValue >= ships[i].battle) {
           hitCount ++;
           hitTotal ++;
+    //      reroll = true;
+        }
+    /*  else {
+          if (document.getElementById("graviton").checked && reroll) {
+            j--;
+            reroll = false;
+          }
+        }
+         */
+        else {
+          ships[0].miss ++;
         }
         console.log("valor de batalha" + ships[i].battle);
         console.log("dado" + diceValue);
     }
-
   }
   console.log("Hits:" + hitCount);
 }
@@ -510,4 +532,21 @@ var totalReset = function (){
   warsunHit = 3;
   groundforceHit = 8;
   pdsHit = 6;
+}
+
+var rerollAttack = function(ships){
+  var hitCount = 0;
+  if (ships.length > 0) {
+  for (var i=0; i < ships[0].miss; i++) {
+    var diceValue = Math.floor(Math.random() * (10)) + 1;
+    if (diceValue >= ships[i].battle) {
+        hitCount ++;
+        hitTotal ++;
+    }
+    console.log("valor de batalha" + ships[i].battle);
+    console.log("dado" + diceValue);
+  }
+  console.log("Hits:" + hitCount);
+  ships[0].miss = 0;
+}
 }
