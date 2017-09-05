@@ -1,4 +1,4 @@
-=== Universities of Jol-nar
+=== Universities of Jol-nar [OK]
 
 * You receive -1 on your combat rolls during all space battles and invasion combat
 * You may spend a command counter from your strategy allocation to re-roll any of your die rolls
@@ -9,7 +9,8 @@
 
 === The Barony of Letnev
 
-* Before any Space Battle or Invasion Combat Round, you may spend 2 trade goods to give all your spaceships +1, or all your ground forces +2 on their combat rolls for that combat.
+* Before any Space Battle or Invasion Combat Round, you may spend 2 trade goods to give all your spaceships +1, or all your
+ground forces +2 on their combat rolls for that combat.
 
 === The Naalu Collective [OK]
 
@@ -25,4 +26,5 @@
 
 == The Yin Brotherhood
 
-* Before an Invasion Combat in which you are the attacker begins, you may roll 1 die. On a 5+ your opponent loses 1 ground Force and you gain 1 ground force.
+* Before an Invasion Combat in which you are the attacker begins, you may roll 1 die.
+On a 5+ your opponent loses 1 ground Force and you gain 1 ground force.

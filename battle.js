@@ -177,6 +177,7 @@ window.onload = function() {
     console.log("Hit totais:" + hitTotal);
 
     if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
+
     document.getElementById("hitsMessage").style.visibility = "visible"
     document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
     round++;
@@ -505,10 +506,6 @@ var reset = function(){
     for (var i=0; i < ships.length; i++) {
       ships[i].style.display = "none";
     }
-  var techs = document.getElementsByClassName("raceTech");
-    for (var i=0; i< techs.length; i++) {
-      techs[i].style.display = "none";
-    }
 
   document.getElementById("hitsMessage").style.visibility = "hidden"
   dreadShips = [];
@@ -533,6 +530,10 @@ var totalReset = function (){
   for (var i=0; i < tech.length; i++) {
     tech[i].checked = false;
   }
+  var techs = document.getElementsByClassName("raceTech");
+    for (var i=0; i< techs.length; i++) {
+      techs[i].style.display = "none";
+    }
   dreadHit = 5;
   carrierHit = 9;
   cruiserHit = 7;
@@ -546,12 +547,16 @@ var totalReset = function (){
 var rerollAttack = function(ships){
   var hitCount = 0;
   if (ships.length > 0) {
-    for (var i=0; i < ships[0].miss; i++) {
+    var miss = ships[0].miss;
+    ships[0].miss = 0;
+    for (var i=0; i < miss; i++) {
       var diceValue = Math.floor(Math.random() * (10)) + 1;
       if (diceValue >= ships[0].battle) {
           hitCount ++;
           hitTotal ++;
-          ships[0].miss--;
+      }
+      else {
+        ships[0].miss++;
       }
       console.log("valor de batalha" + ships[i].battle);
       console.log("dado re-rolado" + diceValue);
