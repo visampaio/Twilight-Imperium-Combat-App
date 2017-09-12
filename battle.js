@@ -178,7 +178,7 @@ window.onload = function() {
 
     if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
 
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
     round++;
     document.getElementById("currentRound").style.display = "inline"
@@ -221,7 +221,7 @@ window.onload = function() {
     attack(dreadShips);
     attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
     hitTotal = 0;
   }
@@ -234,7 +234,7 @@ window.onload = function() {
       attack(destroyerShips);
     }
     console.log("Hit totais:" + hitTotal);
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
     hitTotal = 0;
   }
@@ -336,15 +336,12 @@ window.onload = function() {
 /////// Races
 var race = document.querySelectorAll(".race input");
 for (var i=0; i < race.length; i++) {
-  race[i].onclick = function() {totalReset();};
+  race[i].onchange = function() {totalReset();};
 }
 
 document.getElementById("naaluCollective").onchange = function() {
   if (this.checked) {
     fighterHit--;
-  }
-  else {
-    fighterHit++;
   }
 }
 
@@ -372,6 +369,20 @@ document.getElementById("universitiesJolnar").onchange = function() {
     pdsHit++;
     warsunHit++;
     document.getElementById("reroll").style.display = "inline";
+  }
+}
+
+document.getElementById("lizixMindnet").onchange = function() {
+  if (this.checked) {
+    dreadHit--;
+    groundforceHit--;
+  }
+}
+
+document.getElementById("baronyLetnev").onchange = function() {
+  if (this.checked) {
+    document.getElementById("addToSpaceships").style.display = "inline";
+    document.getElementById("addToGroundForces").style.display = "inline";
   }
 }
 
@@ -507,7 +518,7 @@ var reset = function(){
       ships[i].style.display = "none";
     }
 
-  document.getElementById("hitsMessage").style.visibility = "hidden"
+  document.getElementById("hitsMessage").style.display = "none"
   dreadShips = [];
   carrierShips = [];
   cruiserShips = [];

@@ -3,7 +3,7 @@
 * You receive -1 on your combat rolls during all space battles and invasion combat
 * You may spend a command counter from your strategy allocation to re-roll any of your die rolls
 
-=== The L1Z1X Mindnet
+=== The L1Z1X Mindnet [OK]
 
 * Your Dreadnought units receive +1 during Space Battles, and your ground force units receive +1 when attacking during Invasion Combat.
 
