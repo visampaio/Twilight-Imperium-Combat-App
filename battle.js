@@ -178,7 +178,7 @@ window.onload = function() {
 
     if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
 
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
     round++;
     document.getElementById("currentRound").style.display = "inline"
@@ -221,7 +221,7 @@ window.onload = function() {
     attack(dreadShips);
     attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
     hitTotal = 0;
   }
@@ -234,7 +234,7 @@ window.onload = function() {
       attack(destroyerShips);
     }
     console.log("Hit totais:" + hitTotal);
-    document.getElementById("hitsMessage").style.visibility = "visible"
+    document.getElementById("hitsMessage").style.display = "block"
     document.getElementById("hitsMessage").innerHTML = ("Hit totais: " + hitTotal);
     hitTotal = 0;
   }
@@ -502,12 +502,11 @@ var attack = function(ships){
 }
 
 var reset = function(){
-  var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops");
+  var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
     for (var i=0; i < ships.length; i++) {
       ships[i].style.display = "none";
     }
 
-  document.getElementById("hitsMessage").style.visibility = "hidden"
   dreadShips = [];
   carrierShips = [];
   cruiserShips = [];
