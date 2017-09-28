@@ -10,7 +10,7 @@ text-align: center;
 
 }
 
-section, div.list {
+section, div.list, .raceTech {
   display: none;
 }
 
@@ -62,16 +62,16 @@ mark {
   height: 34px;
 }
 
-/* Botão toggle do W3Schools */
-
-.switch input {display:none;}
-
 div.tech, div.race {
   width: 80px;
   display: inline-block;
 }
 
 .tech:hover, .race:hover {background-color: #D3D3D3;}
+
+/* Botão toggle do W3Schools */
+
+.switch input {display:none;}
 
 .slider {
   position: absolute;

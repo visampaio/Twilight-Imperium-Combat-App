@@ -188,6 +188,7 @@ var hitTotal = 0;
 
 //  runs attack() for each type of ship and shows total successful hits
   document.getElementById("makeAttack").onclick = function() {
+    resetDiceValues();
 
     if (dreadShips.length > 0 && round == 0 && cannon == true) {
       attack(dreadShips);
@@ -254,6 +255,7 @@ var hitTotal = 0;
 
 // Runs attack() for Dreadnaughts and Warsuns and show total successful hits
   document.getElementById("makeBombardment").onclick = function() {
+    resetDiceValues();
     attack(dreadShips);
     attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
@@ -264,6 +266,7 @@ var hitTotal = 0;
 
 // Runs attack() for Destroyers and show total successful hits
   document.getElementById("antiFighter").onclick = function() {
+    resetDiceValues();
     attack(destroyerShips);
     attack(destroyerShips);
     if (turrets) {
@@ -279,6 +282,7 @@ var hitTotal = 0;
   document.getElementById("resetAttack").onclick = function() {reset();}
 
   document.getElementById("reroll").onclick = function() {
+    resetDiceValues();
     rerollAttack(dreadShips);
     rerollAttack(carrierShips);
     rerollAttack(cruiserShips);
@@ -527,7 +531,6 @@ var attack = function(ships){
   if (ships.length > 0) {
     ships[0].miss = 0;
     var name = ships[0].name;
-    document.getElementById(name).innerHTML = "";
   }
   var hitCount = 0;
   for (var i=0; i < ships.length; i++) {
@@ -555,10 +558,7 @@ var reset = function(){
     for (var i=0; i < elements.length; i++) {
       elements[i].style.display = "none";
     }
-  var shipDices = document.querySelectorAll("#dreadDice, #cruiserDice, #carrierDice, #destroyerDice, #fighterDice, #groundDice, #pdsDice, #warDice");
-    for (var i=0; i< shipDices.length; i++) {
-      shipDices[i].innerHTML = "";
-    }
+  resetDiceValues();
   dreadShips = [];
   carrierShips = [];
   cruiserShips = [];
@@ -595,19 +595,30 @@ var totalReset = function (){
   pdsHit = 6;
 }
 
+var resetDiceValues = function() {
+  var shipDices = document.querySelectorAll("#dreadDice, #cruiserDice, #carrierDice, #destroyerDice, #fighterDice, #groundDice, #pdsDice, #warDice");
+    for (var i=0; i< shipDices.length; i++) {
+      shipDices[i].innerHTML = "";
+    }
+}
+
 var rerollAttack = function(ships){
   var hitCount = 0;
   if (ships.length > 0) {
     var miss = ships[0].miss;
     ships[0].miss = 0;
+    var name = ships[0].name;
+    document.getElementById(name).innerHTML = "";
     for (var i=0; i < miss; i++) {
       var diceValue = Math.floor(Math.random() * (10)) + 1;
       if (diceValue >= ships[0].battle) {
           hitCount ++;
           hitTotal ++;
+          document.getElementById(name).innerHTML += " <mark>" + diceValue + "</mark>";
       }
       else {
         ships[0].miss++;
+        document.getElementById(name).innerHTML += " " + diceValue;
       }
       console.log("valor de batalha" + ships[i].battle);
       console.log("dado re-rolado" + diceValue);
