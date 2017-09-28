@@ -513,7 +513,6 @@ var attack = function(ships){
 }
 
 var reset = function(){
-  var ships = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops");
     for (var i=0; i < ships.length; i++) {
       ships[i].style.display = "none";
     }
