@@ -8,6 +8,40 @@
 </head>
 
 <body>
+
+  <section id="chooseTech">
+    <button class="link" id="techs">Techs</button>
+    <div class="list" id="techList">
+      <div class="tech">Hylar V Assault Laser: <label class="switch"> <input id="assaultLaser" type="checkbox"><span class="slider"></span></label> </div>
+      <div class="tech">Automated Defence Turrets: <label class="switch"> <input id="automatedDefence" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Cybernetics: <label class="switch"> <input id="cybernetics" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Graviton Laser System: <label class="switch"> <input id="graviton" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Magen Defense Grid: <label class="switch"> <input id="magen" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Gen Synthesis: <label class="switch"> <input id="synthesis" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Assault Cannon: <label class="switch"> <input id="assaultCannon" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Advanced Fighters: <label class="switch"> <input id="advancedFighters" type="checkbox"> <span class="slider"></span> </label></div>
+    </div><hr>
+  </section>
+
+  <section id="chooseRace">
+      <button class="link">Races</button>
+      <div class="race">The Naalu Collective: <label class="switch"> <input id="naaluCollective" type="radio" name="race"><span class="slider"></span></label> </div>
+      <div class="race">Sardakk N'orr: <label class="switch"> <input id="sardakkNorr" type="radio" name="race"><span class="slider"></span></label> </div>
+      <div class="race">Universities of Jol-nar: <label class="switch"> <input id="universitiesJolnar" type="radio" name="race"><span class="slider"></span></label> </div>
+      <div class="race">The Barony of Letnev: <label class="switch"> <input id="baronyLetnev" type="radio" name="race"><span class="slider"></span></label> </div>
+      <div class="race">The L1Z1X Mindnet: <label class="switch"> <input id="lizixMindnet" type="radio" name="race"><span class="slider"></span></label> </div>
+      <br><button id="nextRace">Confirm</button>
+  </section>
+
+  <section id="chooseRaceTech">
+    <button class="link" id="races">Race techs</button>
+    <div class="list" id="raceTechList">
+      <button id="reroll" class="raceTech">Reroll</button>
+      <button id="addToSpaceships" class="raceTech">Spaceships</button>
+      <button id="addToGroundForces" class="raceTech">Ground Forces</button>
+    </div><hr>
+  </section>
+
   <section id="combat" class="center">
     <img id="createDread" alt="Criar Dread!" src="Graphics_Assets\Dreadnaught.png"></img>
     <img id="createCarrier" alt="Criar Carrier!" src="Graphics_Assets\Carrier.png"></img>
@@ -23,39 +57,6 @@
     <button id="makeBombardment">Bombardment</button>
     <button id="antiFighter">Anti Fighter Barrage</button>
     <button id="dacxive">Dacxive Animators</button>
-  <hr>
-  </section>
-
-
-
-  <section id="chooseTech">
-    <h3>Techs</h3>
-    <div class="tech">Hylar V Assault Laser: <label class="switch"> <input id="assaultLaser" type="checkbox"><span class="slider"></span></label> </div>
-    <div class="tech">Automated Defence Turrets: <label class="switch"> <input id="automatedDefence" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Cybernetics: <label class="switch"> <input id="cybernetics" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Graviton Laser System: <label class="switch"> <input id="graviton" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Magen Defense Grid: <label class="switch"> <input id="magen" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Gen Synthesis: <label class="switch"> <input id="synthesis" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Assault Cannon: <label class="switch"> <input id="assaultCannon" type="checkbox"> <span class="slider"></span> </label></div>
-    <div class="tech">Advanced Fighters: <label class="switch"> <input id="advancedFighters" type="checkbox"> <span class="slider"></span> </label></div>
-  <hr>
-  </section>
-
-  <section id="chooseRace">
-      <h3>Races</h3>
-      <div class="race">The Naalu Collective: <label class="switch"> <input id="naaluCollective" type="radio" name="race"><span class="slider"></span></label> </div>
-      <div class="race">Sardakk N'orr: <label class="switch"> <input id="sardakkNorr" type="radio" name="race"><span class="slider"></span></label> </div>
-      <div class="race">Universities of Jol-nar: <label class="switch"> <input id="universitiesJolnar" type="radio" name="race"><span class="slider"></span></label> </div>
-      <div class="race">The Barony of Letnev: <label class="switch"> <input id="baronyLetnev" type="radio" name="race"><span class="slider"></span></label> </div>
-      <div class="race">The L1Z1X Mindnet: <label class="switch"> <input id="lizixMindnet" type="radio" name="race"><span class="slider"></span></label> </div>
-  <hr>
-  </section>
-
-  <section id="chooseRaceTech">
-      <h3>Race techs</h3>
-      <button id="reroll" class="raceTech">Reroll</button>
-      <button id="addToSpaceships" class="raceTech">Spaceships</button>
-      <button id="addToGroundForces" class="raceTech">Ground Forces</button>
   <hr>
   </section>
 
@@ -105,4 +106,19 @@
   </section>
 
 </body>
+
+<script type="text/javascript">
+function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "battle.js";
+    document.body.appendChild(element);
+}
+
+if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+else window.onload = downloadJSAtOnload;
+</script>
+
 </html>

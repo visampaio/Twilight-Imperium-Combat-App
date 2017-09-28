@@ -87,7 +87,35 @@ var pdsShips = [];
 
 var hitTotal = 0;
 
-window.onload = function() {
+// Changes what sections are being shown on each screen
+
+  document.getElementById("nextRace").onclick = function() {
+    document.getElementById("chooseRace").style.display = "none";
+    document.getElementById("chooseTech").style.display = "block";
+    document.getElementById("chooseRaceTech").style.display = "block";
+    document.getElementById("combat").style.display = "block";
+    document.getElementById("battleships").style.display = "block";
+  }
+
+  document.getElementById("techs").onclick = function() {
+    var list = document.getElementById("techList");
+    if (list.style.display === "block") {
+      list.style.display = "none";
+    }
+    else {
+      list.style.display = "block";
+    }
+  }
+
+  document.getElementById("races").onclick = function() {
+    var list = document.getElementById("raceTechList");
+    if (list.style.display === "block") {
+      list.style.display = "none";
+    }
+    else {
+      list.style.display = "block";
+    }
+  }
 
 // Creates new ships divided in arrays by type
 
@@ -486,8 +514,6 @@ document.getElementById("baronyLetnev").onchange = function() {
       document.getElementById("warFleetDamage").style.display = "none";
     }
   }
-
-}
 
 var attack = function(ships){
   if (ships.length > 0) {

@@ -10,12 +10,21 @@ text-align: center;
 
 }
 
-section {
+section, div.list {
   display: none;
 }
 
 #chooseRace {
   display: block;
+}
+
+button.link {
+  background: none;
+  border: none;
+  display: block;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
 figure {
@@ -91,8 +100,4 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-.raceTech {
-  display: none;
 }
