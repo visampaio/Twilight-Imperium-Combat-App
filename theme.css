@@ -10,11 +10,35 @@ text-align: center;
 
 }
 
+section, div.list, .raceTech {
+  display: none;
+}
+
+#chooseRace {
+  display: block;
+}
+
+button.link {
+  background: none;
+  border: none;
+  display: block;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
 figure {
-  float: left;
   margin: 0;
   padding: 0;
+  font-size: 2em;
+}
 
+.damagedShip {
+  float: left;
+}
+
+mark {
+  background-color: green;
 }
 
 #overlay {
@@ -38,16 +62,16 @@ figure {
   height: 34px;
 }
 
-/* Botão toggle do W3Schools */
-
-.switch input {display:none;}
-
 div.tech, div.race {
   width: 80px;
   display: inline-block;
 }
 
 .tech:hover, .race:hover {background-color: #D3D3D3;}
+
+/* Botão toggle do W3Schools */
+
+.switch input {display:none;}
 
 .slider {
   position: absolute;
@@ -83,8 +107,4 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-.raceTech {
-  display: none;
 }
