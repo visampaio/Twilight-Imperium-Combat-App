@@ -5,11 +5,13 @@
 
 === The L1Z1X Mindnet [OK]
 
-* Your Dreadnought units receive +1 during Space Battles, and your ground force units receive +1 when attacking during Invasion Combat.
+* Your Dreadnought units receive +1 during Space Battles,
+and your ground force units receive +1 when attacking during Invasion Combat.
 
 === The Barony of Letnev
 
-* Before any Space Battle or Invasion Combat Round, you may spend 2 trade goods to give all your spaceships +1, or all your
+* Before any Space Battle or Invasion Combat Round, you may spend
+2 trade goods to give all your spaceships +1, or all your
 ground forces +2 on their combat rolls for that combat.
 
 === The Naalu Collective [OK]
