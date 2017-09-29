@@ -4,56 +4,64 @@ function dreadnought(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="dreadDice";
+    this.hitSpan ="dreadHit";
+    this.missSpan ="dreadMiss";
 }
 
 function carrier(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="carrierDice";
+    this.hitSpan ="carrierHit";
+    this.missSpan ="carrierMiss";
 }
 
 function cruiser(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="cruiserDice";
+    this.hitSpan ="cruiserHit";
+    this.missSpan ="cruiserMiss";
 }
 
 function destroyer(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="destroyerDice";
+    this.hitSpan ="destroyerHit";
+    this.missSpan ="destroyerMiss";
 }
 
 function fighter(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="fighterDice";
+    this.hitSpan ="fighterHit";
+    this.missSpan ="fighterMiss";
 }
 
 function warsun(battle) {
     this.battle = battle;
     this.dice = 3;
     this.miss = 0;
-    this.name ="warDice";
+    this.hitSpan ="warHit";
+    this.missSpan ="warMiss";
 }
 
 function groundforce(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="groundDice";
+    this.hitSpan ="groundHit";
+    this.missSpan ="groundMiss";
 }
 
 function PDS(battle) {
     this.battle = battle;
     this.dice = 1;
     this.miss = 0;
-    this.name ="pdsDice";
+    this.hitSpan ="pdsHit";
+    this.missSpan ="pdsMiss";
 }
 
 // Essa seção é responsavel por definir qual o valor de combate inicial de cada nave. Ta aqui fora pra permitir modificações desses valores por conta de efeitos que podem ser invocados //
@@ -101,6 +109,7 @@ var hitTotal = 0;
     document.getElementById("chooseRace").style.display = "none";
     document.getElementById("chooseTech").style.display = "block";
     document.getElementById("chooseRaceTech").style.display = "block";
+    document.getElementById("createShips").style.display = "block";
     document.getElementById("combat").style.display = "block";
     document.getElementById("battleships").style.display = "block";
   }
@@ -189,6 +198,7 @@ var hitTotal = 0;
 //  runs attack() for each type of ship and shows total successful hits
   document.getElementById("makeAttack").onclick = function() {
     resetDiceValues();
+    hitTotal = 0;
 
     if (dreadShips.length > 0 && round == 0 && cannon == true) {
       attack(dreadShips);
@@ -220,7 +230,7 @@ var hitTotal = 0;
     round++;
     document.getElementById("currentRound").style.display = "inline"
     document.getElementById("currentRound").innerHTML = ("Round: " + round);
-    hitTotal = 0;
+
 
     if (pdsShips.length > 0 && magenground) {
       for (var i=0; i < groundShips.length; i++) {
@@ -282,7 +292,6 @@ var hitTotal = 0;
   document.getElementById("resetAttack").onclick = function() {reset();}
 
   document.getElementById("reroll").onclick = function() {
-    resetDiceValues();
     rerollAttack(dreadShips);
     rerollAttack(carrierShips);
     rerollAttack(cruiserShips);
@@ -530,7 +539,8 @@ document.getElementById("baronyLetnev").onchange = function() {
 var attack = function(ships){
   if (ships.length > 0) {
     ships[0].miss = 0;
-    var name = ships[0].name;
+    var hitSpan = ships[0].hitSpan;
+    var missSpan = ships[0].missSpan;
   }
   var hitCount = 0;
   for (var i=0; i < ships.length; i++) {
@@ -540,11 +550,11 @@ var attack = function(ships){
       if (diceValue >= ships[i].battle) {
           hitCount ++;
           hitTotal ++;
-          document.getElementById(name).innerHTML += " <mark>" + diceValue + "</mark>";
+          document.getElementById(hitSpan).innerHTML += " <mark>" + diceValue + "</mark>";
         }
         else {
           ships[0].miss ++;
-          document.getElementById(name).innerHTML += " " + diceValue;
+          document.getElementById(missSpan).innerHTML += " " + diceValue;
         }
         console.log("valor de batalha" + ships[i].battle);
         console.log("dado" + diceValue);
@@ -596,7 +606,7 @@ var totalReset = function (){
 }
 
 var resetDiceValues = function() {
-  var shipDices = document.querySelectorAll("#dreadDice, #cruiserDice, #carrierDice, #destroyerDice, #fighterDice, #groundDice, #pdsDice, #warDice");
+  var shipDices = document.querySelectorAll("#dreadHit, #dreadMiss, #cruiserHit, #cruiserMiss, #carrierHit, #carrierMiss, #destroyerHit, #destroyerMiss, #fighterHit, #fighterMiss, #groundHit, #groundMiss, #pdsHit, #pdsMiss, #warHit, #warMiss");
     for (var i=0; i< shipDices.length; i++) {
       shipDices[i].innerHTML = "";
     }
@@ -607,18 +617,19 @@ var rerollAttack = function(ships){
   if (ships.length > 0) {
     var miss = ships[0].miss;
     ships[0].miss = 0;
-    var name = ships[0].name;
-    document.getElementById(name).innerHTML = "";
+    var hitSpan = ships[0].hitSpan;
+    var missSpan = ships[0].missSpan;
+    document.getElementById(missSpan).innerHTML = "";
     for (var i=0; i < miss; i++) {
       var diceValue = Math.floor(Math.random() * (10)) + 1;
       if (diceValue >= ships[0].battle) {
           hitCount ++;
           hitTotal ++;
-          document.getElementById(name).innerHTML += " <mark>" + diceValue + "</mark>";
+          document.getElementById(hitSpan).innerHTML += " <mark>" + diceValue + "</mark>";
       }
       else {
         ships[0].miss++;
-        document.getElementById(name).innerHTML += " " + diceValue;
+        document.getElementById(missSpan).innerHTML += " " + diceValue;
       }
       console.log("valor de batalha" + ships[i].battle);
       console.log("dado re-rolado" + diceValue);
