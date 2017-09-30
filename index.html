@@ -19,6 +19,7 @@
       <div class="tech">Magen Defense Grid: <label class="switch"> <input id="magen" type="checkbox"> <span class="slider"></span> </label></div>
       <div class="tech">Gen Synthesis: <label class="switch"> <input id="synthesis" type="checkbox"> <span class="slider"></span> </label></div>
       <div class="tech">Assault Cannon: <label class="switch"> <input id="assaultCannon" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="tech">Dacxive Animators: <label class="switch"> <input id="dacxiveAnimators" type="checkbox"> <span class="slider"></span> </label></div>
       <div class="tech">Advanced Fighters: <label class="switch"> <input id="advancedFighters" type="checkbox"> <span class="slider"></span> </label></div>
     </div><hr>
   </section>
@@ -36,9 +37,7 @@
   <section id="chooseRaceTech">
     <button class="link" id="races">Race techs</button>
     <div class="list" id="raceTechList">
-      <button id="reroll" class="raceTech">Reroll</button>
-      <button id="addToSpaceships" class="raceTech">Spaceships</button>
-      <button id="addToGroundForces" class="raceTech">Ground Forces</button>
+
     </div><hr>
   </section>
 
@@ -51,6 +50,8 @@
     <img id="createGroundForce" alt="Criar Ground Force!" src="Graphics_Assets\GroundForce.png"></img>
     <img id="createPDS" alt="Criar PDS!" src="Graphics_Assets\PDS.png"></img>
     <img id="createWarsun" alt="Criar War Sun!" src="Graphics_Assets\Warsun.png"></img>
+    <hr>
+    <button id="nextShips">Start attack</button>
   </section>
 
   <section id="combat" class="center">
@@ -58,8 +59,11 @@
     <button id="resetAttack">Finish Combat</button>
     <button id="makeBombardment">Bombardment</button>
     <button id="antiFighter">Anti Fighter Barrage</button>
-    <button id="dacxive">Dacxive Animators</button>
-  <hr>
+    <button id="dacxive" class="raceTech">Dacxive Animators</button>
+    <button id="reroll" class="raceTech">Reroll</button>
+    <button id="addToSpaceships" class="raceTech">Spaceships</button>
+    <button id="addToGroundForces" class="raceTech">Ground Forces</button>
+    <hr>
   </section>
 
   <section id="currentRound"></section><br/>

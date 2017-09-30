@@ -110,8 +110,14 @@ var hitTotal = 0;
     document.getElementById("chooseTech").style.display = "block";
     document.getElementById("chooseRaceTech").style.display = "block";
     document.getElementById("createShips").style.display = "block";
-    document.getElementById("combat").style.display = "block";
     document.getElementById("battleships").style.display = "block";
+  }
+
+  document.getElementById("nextShips").onclick = function() {
+    document.getElementById("chooseTech").style.display = "none";
+    document.getElementById("chooseRaceTech").style.display = "none";
+    document.getElementById("createShips").style.display = "none";
+    document.getElementById("combat").style.display = "block";
   }
 
   document.getElementById("techs").onclick = function() {
@@ -289,7 +295,13 @@ var hitTotal = 0;
   }
 
 // Deletes all arrays of ships and remove them from the screen. Loop adds all IDs of images into a big array and then change the display to "none" one by one. //
-  document.getElementById("resetAttack").onclick = function() {reset();}
+  document.getElementById("resetAttack").onclick = function() {
+    reset();
+    document.getElementById("combat").style.display = "none";
+    document.getElementById("chooseTech").style.display = "block";
+    document.getElementById("chooseRaceTech").style.display = "block";
+    document.getElementById("createShips").style.display = "block";
+  }
 
   document.getElementById("reroll").onclick = function() {
     rerollAttack(dreadShips);
@@ -373,6 +385,15 @@ var hitTotal = 0;
     }
   }
 
+  document.getElementById("dacxiveAnimators").onchange = function() {
+    if (this.checked) {
+      document.getElementById("dacxive").style.display = "inline";
+    }
+    else {
+      document.getElementById("dacxive").style.display = "none";
+    }
+  }
+
   document.getElementById("advancedFighters").onchange = function() {
     if (this.checked) {
       fighterHit--;
@@ -385,7 +406,7 @@ var hitTotal = 0;
 /////// Races
 var race = document.querySelectorAll(".race input");
 for (var i=0; i < race.length; i++) {
-  race[i].onchange = function() {totalReset();};
+  race[i].onclick = function() {totalReset();};
 }
 
 document.getElementById("naaluCollective").onchange = function() {
@@ -587,10 +608,6 @@ var reset = function(){
 
 var totalReset = function (){
   reset();
-  var tech = document.querySelectorAll(".tech input");
-  for (var i=0; i < tech.length; i++) {
-    tech[i].checked = false;
-  }
   var techs = document.getElementsByClassName("raceTech");
     for (var i=0; i< techs.length; i++) {
       techs[i].style.display = "none";
