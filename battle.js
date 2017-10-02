@@ -86,6 +86,7 @@ var turrets = false;
 var cannon = false;
 var magenground = false;
 var groundRez = false;
+var againstXxcha = false;
 var resurrect = 0;
 
 // Essa seção é das arrays da quantidade de naves estão sendo enviadas para combate //
@@ -206,17 +207,28 @@ var hitTotal = 0;
     resetDiceValues();
     hitTotal = 0;
 
-    if (dreadShips.length > 0 && round == 0 && cannon == true) {
-      attack(dreadShips);
-      document.getElementById("preDread").style.display = "inline"
-      document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
-      hitTotal = 0;
+    if (round == 0) {
+      if (dreadShips.length > 0 && cannon) {
+        attack(dreadShips);
+        document.getElementById("preDread").style.display = "inline"
+        document.getElementById("preDread").innerHTML = ("Preemptive Dreadnaughts Assault Cannon: " + hitTotal);
+        hitTotal = 0;
+      }
+
+      if (againstXxcha) {
+        changeBattleValue(dreadShips, "+", 1);
+        changeBattleValue(carrierShips, "+", 1);
+        changeBattleValue(cruiserShips, "+", 1);
+        changeBattleValue(destroyerShips, "+", 1);
+        changeBattleValue(fighterShips, "+", 1);
+        changeBattleValue(groundShips, "+", 1);
+        changeBattleValue(pdsShips, "+", 1);
+        changeBattleValue(warsunShips, "+", 1);
+      }
     }
 
     if (pdsShips.length > 0 && magenground) {
-      for (var i=0; i < groundShips.length; i++) {
-        groundShips[i].battle --;
-      }
+      changeBattleValue(groundShips, "-", 1);
     }
 
     attack(dreadShips);
@@ -239,9 +251,19 @@ var hitTotal = 0;
 
 
     if (pdsShips.length > 0 && magenground) {
-      for (var i=0; i < groundShips.length; i++) {
-        groundShips[i].battle ++;
-      }
+      changeBattleValue(groundShips, "+", 1);
+    }
+
+    if (againstXxcha) {
+      changeBattleValue(dreadShips, "-", 1);
+      changeBattleValue(carrierShips, "-", 1);
+      changeBattleValue(cruiserShips, "-", 1);
+      changeBattleValue(destroyerShips, "-", 1);
+      changeBattleValue(fighterShips, "-", 1);
+      changeBattleValue(groundShips, "-", 1);
+      changeBattleValue(pdsShips, "-", 1);
+      changeBattleValue(warsunShips, "-", 1);
+      againstXxcha = false;
     }
 
     // Disables attack button to provide visual feedback and prevent accidental clicks. //
@@ -301,20 +323,6 @@ var hitTotal = 0;
     document.getElementById("chooseTech").style.display = "block";
     document.getElementById("chooseRaceTech").style.display = "block";
     document.getElementById("createShips").style.display = "block";
-  }
-
-  document.getElementById("reroll").onclick = function() {
-    rerollAttack(dreadShips);
-    rerollAttack(carrierShips);
-    rerollAttack(cruiserShips);
-    rerollAttack(destroyerShips);
-    rerollAttack(fighterShips);
-    rerollAttack(groundShips);
-    rerollAttack(pdsShips);
-    rerollAttack(warsunShips);
-    document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
-    hitTotal = 0;
-    this.disabled = true;
   }
 
 /////// Techs
@@ -458,34 +466,36 @@ document.getElementById("baronyLetnev").onchange = function() {
 
 /////// Race Techs
 
+document.getElementById("reroll").onclick = function() {
+  rerollAttack(dreadShips);
+  rerollAttack(carrierShips);
+  rerollAttack(cruiserShips);
+  rerollAttack(destroyerShips);
+  rerollAttack(fighterShips);
+  rerollAttack(groundShips);
+  rerollAttack(pdsShips);
+  rerollAttack(warsunShips);
+  document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
+  hitTotal = 0;
+  this.disabled = true;
+}
+
 document.getElementById("addToSpaceships").onclick = function() {
-  for (var i=0; i < dreadShips.length; i++) {
-    dreadShips[i].battle --;
-  }
-  for (var i=0; i < carrierShips.length; i++) {
-    carrierShips[i].battle --;
-  }
-  for (var i=0; i < cruiserShips.length; i++) {
-    cruiserShips[i].battle --;
-  }
-  for (var i=0; i < destroyerShips.length; i++) {
-    destroyerShips[i].battle --;
-  }
-  for (var i=0; i < fighterShips.length; i++) {
-    fighterShips[i].battle --;
-  }
-  for (var i=0; i < warsunShips.length; i++) {
-    warsunShips[i].battle --;
-  }
+  changeBattleValue(dreadShips, "-", 1);
+  changeBattleValue(carrierShips, "-", 1);
+  changeBattleValue(cruiserShips, "-", 1);
+  changeBattleValue(destroyerShips, "-", 1);
+  changeBattleValue(fighterShips, "-", 1);
+  changeBattleValue(warsunShips, "-", 1);
 }
 
 document.getElementById("addToGroundForces").onclick = function() {
-  for (var i=0; i < groundShips.length; i++) {
-    groundShips[i].battle --;
-  }
-  for (var i=0; i < pdsShips.length; i++) {
-    pdsShips[i].battle -= 2;
-  }
+  changeBattleValue(groundShips, "-", 2);
+  changeBattleValue(pdsShips, "-", 2);
+}
+
+document.getElementById("xxchaKingdom").onclick = function() {
+  againstXxcha = true;
 }
 
 /////// Remove Ships that were created by clicking on them
@@ -661,7 +671,7 @@ var resetDiceValues = function() {
     }
 }
 
-var rerollAttack = function(ships){
+var rerollAttack = function(ships) {
   var hitCount = 0;
   if (ships.length > 0) {
     var miss = ships[0].miss;
@@ -684,5 +694,19 @@ var rerollAttack = function(ships){
       console.log("dado re-rolado" + diceValue);
     }
     console.log("Hits:" + hitCount);
+  }
+}
+
+var changeBattleValue = function(ships, operator, value) {
+  if (operator === "+") {
+    for (var i=0; i < ships.length; i++) {
+      ships[i].battle += value;
+    }
+  }
+
+  else {
+    for (var i=0; i < ships.length; i++) {
+      ships[i].battle -= value;
+    }
   }
 }
