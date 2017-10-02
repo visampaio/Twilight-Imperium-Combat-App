@@ -456,7 +456,39 @@ document.getElementById("baronyLetnev").onchange = function() {
   }
 }
 
-/////// Remove Ships that were created by clicking on them //
+/////// Race Techs
+
+document.getElementById("addToSpaceships").onclick = function() {
+  for (var i=0; i < dreadShips.length; i++) {
+    dreadShips[i].battle --;
+  }
+  for (var i=0; i < carrierShips.length; i++) {
+    carrierShips[i].battle --;
+  }
+  for (var i=0; i < cruiserShips.length; i++) {
+    cruiserShips[i].battle --;
+  }
+  for (var i=0; i < destroyerShips.length; i++) {
+    destroyerShips[i].battle --;
+  }
+  for (var i=0; i < fighterShips.length; i++) {
+    fighterShips[i].battle --;
+  }
+  for (var i=0; i < warsunShips.length; i++) {
+    warsunShips[i].battle --;
+  }
+}
+
+document.getElementById("addToGroundForces").onclick = function() {
+  for (var i=0; i < groundShips.length; i++) {
+    groundShips[i].battle --;
+  }
+  for (var i=0; i < pdsShips.length; i++) {
+    pdsShips[i].battle -= 2;
+  }
+}
+
+/////// Remove Ships that were created by clicking on them
   document.getElementById("dreadImg").onclick = function() {
     dreadnormal--;
     document.getElementById("dreadFleet").innerHTML = "<b>" + dreadnormal + "</b>";

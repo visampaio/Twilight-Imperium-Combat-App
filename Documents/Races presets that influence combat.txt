@@ -8,7 +8,7 @@
 * Your Dreadnought units receive +1 during Space Battles,
 and your ground force units receive +1 when attacking during Invasion Combat.
 
-=== The Barony of Letnev
+=== The Barony of Letnev [OK]
 
 * Before any Space Battle or Invasion Combat Round, you may spend
 2 trade goods to give all your spaceships +1, or all your
