@@ -89,6 +89,7 @@ var cannon = false;
 var magenground = false;
 var groundRez = false;
 var againstXxcha = false;
+var isSpaceBattle = true;
 var resurrect = 0;
 
 // Essa seção é das arrays da quantidade de naves estão sendo enviadas para combate //
@@ -206,7 +207,7 @@ var hitTotal = 0;
   }
 
 //  runs attack() for each type of ship and shows total successful hits
-  document.getElementById("makeAttack").onclick = function() {
+  document.getElementById("spaceBattle").onclick = function() {
     resetDiceValues();
     hitTotal = 0;
 
@@ -224,14 +225,8 @@ var hitTotal = 0;
         changeBattleValue(cruiserShips, "+", 1);
         changeBattleValue(destroyerShips, "+", 1);
         changeBattleValue(fighterShips, "+", 1);
-        changeBattleValue(groundShips, "+", 1);
-        changeBattleValue(pdsShips, "+", 1);
         changeBattleValue(warsunShips, "+", 1);
       }
-    }
-
-    if (pdsShips.length > 0 && magenground) {
-      changeBattleValue(groundShips, "-", 1);
     }
 
     attack(dreadShips);
@@ -239,9 +234,59 @@ var hitTotal = 0;
     attack(cruiserShips);
     attack(destroyerShips);
     attack(fighterShips);
+    attack(warsunShips);
+    console.log("Hit totais:" + hitTotal);
+
+    if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
+
+    document.getElementById("hitsMessage").style.display = "block"
+    document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
+    round++;
+    document.getElementById("currentRound").style.display = "inline"
+    document.getElementById("currentRound").innerHTML = ("Round: " + round);
+
+    if (againstXxcha) {
+      changeBattleValue(dreadShips, "-", 1);
+      changeBattleValue(carrierShips, "-", 1);
+      changeBattleValue(cruiserShips, "-", 1);
+      changeBattleValue(destroyerShips, "-", 1);
+      changeBattleValue(fighterShips, "-", 1);
+      changeBattleValue(warsunShips, "-", 1);
+      againstXxcha = false;
+    }
+
+    // Disables attack button to provide visual feedback and prevent accidental clicks. //
+    var input = this;
+    input.disabled = true;
+        setTimeout(function() {
+           input.disabled = false;
+        }, 1000);
+
+    document.getElementById("reroll").disabled = false;
+  }
+
+  document.getElementById("invasionCombat").onclick = function() {
+    resetDiceValues();
+    hitTotal = 0;
+
+    if (isSpaceBattle) {
+      round = 0;
+      isSpaceBattle = false;
+    }
+
+    if (round == 0) {
+      if (againstXxcha) {
+        changeBattleValue(groundShips, "+", 1);
+        changeBattleValue(pdsShips, "+", 1);
+      }
+    }
+
+    if (pdsShips.length > 0 && magenground) {
+      changeBattleValue(groundShips, "-", 1);
+    }
+
     attack(groundShips);
     attack(pdsShips);
-    attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
 
     if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
@@ -258,14 +303,8 @@ var hitTotal = 0;
     }
 
     if (againstXxcha) {
-      changeBattleValue(dreadShips, "-", 1);
-      changeBattleValue(carrierShips, "-", 1);
-      changeBattleValue(cruiserShips, "-", 1);
-      changeBattleValue(destroyerShips, "-", 1);
-      changeBattleValue(fighterShips, "-", 1);
       changeBattleValue(groundShips, "-", 1);
       changeBattleValue(pdsShips, "-", 1);
-      changeBattleValue(warsunShips, "-", 1);
       againstXxcha = false;
     }
 
@@ -513,7 +552,6 @@ document.getElementById("addToGroundForces").onclick = function() {
 
 document.getElementById("xxchaEnemy").onclick = function() {
   againstXxcha = true;
-  this.disabled = true;
 }
 
 document.getElementById("yinRoll").onclick = function() {
@@ -695,6 +733,8 @@ var reset = function(){
   dreaddamage = 0;
   warnormal = 0;
   wardamage = 0;
+  carriernormal = 0;
+  carrierdamage = 0;
   round = 0;
   resurrect = 0;
   document.getElementById("xxchaEnemy").disabled = false;
