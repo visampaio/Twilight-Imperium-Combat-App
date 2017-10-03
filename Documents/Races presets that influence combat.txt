@@ -26,7 +26,7 @@ ground forces +2 on their combat rolls for that combat.
 
 * Your opponents receive -1 on all combat rolls against you during the first combat round of all space battles and invasion combats
 
-== The Yin Brotherhood
+== The Yin Brotherhood [OK]
 
 * Before an Invasion Combat in which you are the attacker begins, you may roll 1 die.
 On a 5+ your opponent loses 1 ground Force and you gain 1 ground force.

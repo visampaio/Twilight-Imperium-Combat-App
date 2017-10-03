@@ -464,6 +464,12 @@ document.getElementById("baronyLetnev").onchange = function() {
   }
 }
 
+document.getElementById("yinBrotherhood").onchange = function() {
+  if (this.checked) {
+    document.getElementById("yinRoll").style.display = "inline";
+  }
+}
+
 /////// Race Techs
 
 document.getElementById("reroll").onclick = function() {
@@ -494,8 +500,21 @@ document.getElementById("addToGroundForces").onclick = function() {
   changeBattleValue(pdsShips, "-", 2);
 }
 
-document.getElementById("xxchaKingdom").onclick = function() {
+document.getElementById("xxchaEnemy").onclick = function() {
   againstXxcha = true;
+  this.disabled = true;
+}
+
+document.getElementById("yinRoll").onclick = function() {
+  var roll = Math.floor(Math.random() * (10)) + 1;
+  if (roll >= 5) {
+    var newShip = new groundforce(groundforceHit);
+    groundShips.push(newShip);
+    document.getElementById("groundImg").style.display = "inline";
+    document.getElementById("groundFleet").style.display = "inline";
+    document.getElementById("groundFleet").innerHTML = "<b>" + groundShips.length + "</b>";
+  }
+  this.disabled = true;
 }
 
 /////// Remove Ships that were created by clicking on them
@@ -646,6 +665,8 @@ var reset = function(){
   wardamage = 0;
   round = 0;
   resurrect = 0;
+  document.getElementById("xxchaEnemy").disabled = false;
+  document.getElementById("yinRoll").disabled = false;
 }
 
 var totalReset = function (){
