@@ -33,13 +33,16 @@
       <div class="race">The L1Z1X Mindnet: <label class="switch"> <input id="lizixMindnet" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The Xxcha Kingdom: <label class="switch"> <input id="xxchaKingdom" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The Yin Brotherhood: <label class="switch"> <input id="yinBrotherhood" type="radio" name="race"><span class="slider"></span></label> </div>
+      <div class="race">The Federation of Sol: <label class="switch"> <input id="solFederation" type="radio" name="race"><span class="slider"></span></label> </div>
       <br><button id="nextRace">Confirm</button>
   </section>
 
   <section id="chooseRaceTech">
     <button class="link" id="races">Race techs</button>
     <div class="list" id="raceTechList">
-
+      <div class="raceTech tech" id="markTech">Mark II Advanced Carriers: <label class="switch"> <input id="advancedCarrier" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="raceTech tech" id="specTech">Spec Ops Training: <label class="switch"> <input id="specTraining" type="checkbox"> <span class="slider"></span> </label></div>
+      <div class="raceTech tech" id="fanatTech">Fanaticism: <label class="switch"> <input id="fanaticism" type="checkbox"> <span class="slider"></span> </label></div>
     </div><hr>
   </section>
 
@@ -53,11 +56,12 @@
     <img id="createPDS" alt="Criar PDS!" src="Graphics_Assets\PDS.png"></img>
     <img id="createWarsun" alt="Criar War Sun!" src="Graphics_Assets\Warsun.png"></img>
     <hr>
-    <button id="nextShips">Start attack</button>
+    <button id="nextShips">Combat mode</button>
   </section>
 
   <section id="combat" class="center">
-    <button id="makeAttack">Attack!!</button>
+    <button id="spaceBattle">Space Battle</button>
+    <button id="invasionCombat">Invasion Combat</button>
     <button id="resetAttack">Finish Combat</button>
     <button id="makeBombardment">Bombardment</button>
     <button id="antiFighter">Anti Fighter Barrage</button>

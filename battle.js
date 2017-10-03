@@ -79,6 +79,8 @@ var dreadnormal = 0;
 var dreaddamage = 0;
 var warnormal = 0;
 var wardamage = 0;
+var carriernormal = 0;
+var carrierdamage = 0;
 
 var round = 0;
 
@@ -87,6 +89,7 @@ var cannon = false;
 var magenground = false;
 var groundRez = false;
 var againstXxcha = false;
+var isSpaceBattle = true;
 var resurrect = 0;
 
 // Essa seção é das arrays da quantidade de naves estão sendo enviadas para combate //
@@ -153,10 +156,11 @@ var hitTotal = 0;
   }
   document.getElementById("createCarrier").onclick = function() {
     var newShip = new carrier(carrierHit);
+    carriernormal++;
     carrierShips.push(newShip);
     document.getElementById("carrierImg").style.display = "inline";
     document.getElementById("carrierFleet").style.display = "inline";
-    document.getElementById("carrierFleet").innerHTML = "<b>" + carrierShips.length + "</b>";
+    document.getElementById("carrierFleet").innerHTML = "<b>" + carriernormal + "</b>";
   }
   document.getElementById("createCruiser").onclick = function() {
     var newShip = new cruiser(cruiserHit);
@@ -203,7 +207,7 @@ var hitTotal = 0;
   }
 
 //  runs attack() for each type of ship and shows total successful hits
-  document.getElementById("makeAttack").onclick = function() {
+  document.getElementById("spaceBattle").onclick = function() {
     resetDiceValues();
     hitTotal = 0;
 
@@ -221,14 +225,8 @@ var hitTotal = 0;
         changeBattleValue(cruiserShips, "+", 1);
         changeBattleValue(destroyerShips, "+", 1);
         changeBattleValue(fighterShips, "+", 1);
-        changeBattleValue(groundShips, "+", 1);
-        changeBattleValue(pdsShips, "+", 1);
         changeBattleValue(warsunShips, "+", 1);
       }
-    }
-
-    if (pdsShips.length > 0 && magenground) {
-      changeBattleValue(groundShips, "-", 1);
     }
 
     attack(dreadShips);
@@ -236,9 +234,59 @@ var hitTotal = 0;
     attack(cruiserShips);
     attack(destroyerShips);
     attack(fighterShips);
+    attack(warsunShips);
+    console.log("Hit totais:" + hitTotal);
+
+    if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
+
+    document.getElementById("hitsMessage").style.display = "block"
+    document.getElementById("hitsMessage").innerHTML = ("Ships Hits: " + hitTotal);
+    round++;
+    document.getElementById("currentRound").style.display = "inline"
+    document.getElementById("currentRound").innerHTML = ("Round: " + round);
+
+    if (againstXxcha) {
+      changeBattleValue(dreadShips, "-", 1);
+      changeBattleValue(carrierShips, "-", 1);
+      changeBattleValue(cruiserShips, "-", 1);
+      changeBattleValue(destroyerShips, "-", 1);
+      changeBattleValue(fighterShips, "-", 1);
+      changeBattleValue(warsunShips, "-", 1);
+      againstXxcha = false;
+    }
+
+    // Disables attack button to provide visual feedback and prevent accidental clicks. //
+    var input = this;
+    input.disabled = true;
+        setTimeout(function() {
+           input.disabled = false;
+        }, 1000);
+
+    document.getElementById("reroll").disabled = false;
+  }
+
+  document.getElementById("invasionCombat").onclick = function() {
+    resetDiceValues();
+    hitTotal = 0;
+
+    if (isSpaceBattle) {
+      round = 0;
+      isSpaceBattle = false;
+    }
+
+    if (round == 0) {
+      if (againstXxcha) {
+        changeBattleValue(groundShips, "+", 1);
+        changeBattleValue(pdsShips, "+", 1);
+      }
+    }
+
+    if (pdsShips.length > 0 && magenground) {
+      changeBattleValue(groundShips, "-", 1);
+    }
+
     attack(groundShips);
     attack(pdsShips);
-    attack(warsunShips);
     console.log("Hit totais:" + hitTotal);
 
     if (document.getElementById("graviton").checked) {rerollAttack(pdsShips);}
@@ -255,14 +303,8 @@ var hitTotal = 0;
     }
 
     if (againstXxcha) {
-      changeBattleValue(dreadShips, "-", 1);
-      changeBattleValue(carrierShips, "-", 1);
-      changeBattleValue(cruiserShips, "-", 1);
-      changeBattleValue(destroyerShips, "-", 1);
-      changeBattleValue(fighterShips, "-", 1);
       changeBattleValue(groundShips, "-", 1);
       changeBattleValue(pdsShips, "-", 1);
-      changeBattleValue(warsunShips, "-", 1);
       againstXxcha = false;
     }
 
@@ -467,6 +509,14 @@ document.getElementById("baronyLetnev").onchange = function() {
 document.getElementById("yinBrotherhood").onchange = function() {
   if (this.checked) {
     document.getElementById("yinRoll").style.display = "inline";
+    document.getElementById("fanatTech").style.display = "block";
+  }
+}
+
+document.getElementById("solFederation").onchange = function() {
+  if (this.checked) {
+    document.getElementById("markTech").style.display = "block";
+    document.getElementById("specTech").style.display = "block";
   }
 }
 
@@ -502,17 +552,20 @@ document.getElementById("addToGroundForces").onclick = function() {
 
 document.getElementById("xxchaEnemy").onclick = function() {
   againstXxcha = true;
-  this.disabled = true;
 }
 
 document.getElementById("yinRoll").onclick = function() {
-  var roll = Math.floor(Math.random() * (10)) + 1;
-  if (roll >= 5) {
-    var newShip = new groundforce(groundforceHit);
-    groundShips.push(newShip);
-    document.getElementById("groundImg").style.display = "inline";
-    document.getElementById("groundFleet").style.display = "inline";
-    document.getElementById("groundFleet").innerHTML = "<b>" + groundShips.length + "</b>";
+  if (document.getElementById("fanaticism").checked) {var j = 2;}
+  else {var j = 1;}
+  for (var i=0; i<j; i++) {
+    var roll = Math.floor(Math.random() * (10)) + 1;
+    if (roll >= 5) {
+      var newShip = new groundforce(groundforceHit);
+      groundShips.push(newShip);
+      document.getElementById("groundImg").style.display = "inline";
+      document.getElementById("groundFleet").style.display = "inline";
+      document.getElementById("groundFleet").innerHTML = "<b>" + groundShips.length + "</b>";
+    }
   }
   this.disabled = true;
 }
@@ -540,16 +593,33 @@ document.getElementById("yinRoll").onclick = function() {
     }
   }
   document.getElementById("carrierImg").onclick = function() {
-    carrierShips.pop();
-    document.getElementById("carrierFleet").innerHTML = carrierShips.length;
-    if (carrierShips.length < 1) {
+    carriernormal--;
+    document.getElementById("carrierFleet").innerHTML = "<b>" + carriernormal + "</b>";
+    if (document.getElementById("advancedCarrier").checked) {
+      carrierdamage++;
+      document.getElementById("carrierImgDamage").style.display = "inline";
+      document.getElementById("carrierFleetDamage").style.display = "inline";
+      document.getElementById("carrierFleetDamage").innerHTML = "<b>" + carrierdamage + "</b>";
+    }
+    else {carrierShips.pop();}
+
+    if (carriernormal < 1) {
       document.getElementById("carrierImg").style.display = "none"
       document.getElementById("carrierFleet").style.display = "none";
     }
   }
+  document.getElementById("carrierImgDamage").onclick = function() {
+    carrierShips.pop();
+    carrierdamage--;
+    document.getElementById("carrierFleetDamage").innerHTML = "<b>" + carrierdamage + "</b>";
+    if (carrierdamage < 1) {
+      document.getElementById("carrierImgDamage").style.display = "none"
+      document.getElementById("carrierFleetDamage").style.display = "none";
+    }
+  }
   document.getElementById("cruiserImg").onclick = function() {
     cruiserShips.pop();
-    document.getElementById("cruiserFleet").innerHTML = cruiserShips.length;
+    document.getElementById("cruiserFleet").innerHTML = "<b>" + cruiserShips.length + "</b>";
     if (cruiserShips.length < 1) {
       document.getElementById("cruiserImg").style.display = "none"
       document.getElementById("cruiserFleet").style.display = "none";
@@ -557,7 +627,7 @@ document.getElementById("yinRoll").onclick = function() {
   }
   document.getElementById("destroyerImg").onclick = function() {
     destroyerShips.pop();
-    document.getElementById("destroyerFleet").innerHTML = destroyerShips.length;
+    document.getElementById("destroyerFleet").innerHTML = "<b>" + destroyerShips.length + "</b>";
     if (destroyerShips.length < 1) {
       document.getElementById("destroyerImg").style.display = "none"
       document.getElementById("destroyerFleet").style.display = "none";
@@ -565,7 +635,7 @@ document.getElementById("yinRoll").onclick = function() {
   }
   document.getElementById("fighterImg").onclick = function() {
     fighterShips.pop();
-    document.getElementById("fighterFleet").innerHTML = fighterShips.length;
+    document.getElementById("fighterFleet").innerHTML = "<b>" + fighterShips.length + "</b>";
     if (fighterShips.length < 1) {
       document.getElementById("fighterImg").style.display = "none"
       document.getElementById("fighterFleet").style.display = "none";
@@ -582,7 +652,7 @@ document.getElementById("yinRoll").onclick = function() {
           document.getElementById("resurrectedTroops").innerHTML = ("Tropas Revividas : " + resurrect);
     }
   }
-    document.getElementById("groundFleet").innerHTML = groundShips.length;
+    document.getElementById("groundFleet").innerHTML = "<b>" + groundShips.length + "</b>";
     if (groundShips.length < 1) {
       document.getElementById("groundImg").style.display = "none"
       document.getElementById("groundFleet").style.display = "none";
@@ -590,7 +660,7 @@ document.getElementById("yinRoll").onclick = function() {
   }
   document.getElementById("pdsImg").onclick = function() {
     pdsShips.pop();
-    document.getElementById("pdsFleet").innerHTML = pdsShips.length;
+    document.getElementById("pdsFleet").innerHTML = "<b>" + pdsShips.length + "</b>";
     if (pdsShips.length < 1) {
       document.getElementById("pdsImg").style.display = "none"
       document.getElementById("pdsFleet").style.display = "none";
@@ -663,6 +733,8 @@ var reset = function(){
   dreaddamage = 0;
   warnormal = 0;
   wardamage = 0;
+  carriernormal = 0;
+  carrierdamage = 0;
   round = 0;
   resurrect = 0;
   document.getElementById("xxchaEnemy").disabled = false;
