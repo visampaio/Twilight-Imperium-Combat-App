@@ -33,6 +33,16 @@ figure {
   font-size: 2em;
 }
 
+img {
+  padding: 0 10px;
+  height: 160px;
+  width: auto;
+}
+
+button {
+  font-size: 2em;
+}
+
 .damagedShip {
   float: left;
 }
