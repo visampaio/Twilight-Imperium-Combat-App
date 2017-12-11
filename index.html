@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="theme.css">
   <script src="battle.js"></script>
-  <title>Twilight Imperium 3 - Combat app</title>
+  <title>Twilight Imperium 4 - Combat app</title>
 </head>
 
 <body>
@@ -31,7 +31,6 @@
       <div class="race">Universities of Jol-nar: <label class="switch"> <input id="universitiesJolnar" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The Barony of Letnev: <label class="switch"> <input id="baronyLetnev" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The L1Z1X Mindnet: <label class="switch"> <input id="lizixMindnet" type="radio" name="race"><span class="slider"></span></label> </div>
-      <div class="race">The Xxcha Kingdom: <label class="switch"> <input id="xxchaKingdom" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The Yin Brotherhood: <label class="switch"> <input id="yinBrotherhood" type="radio" name="race"><span class="slider"></span></label> </div>
       <div class="race">The Federation of Sol: <label class="switch"> <input id="solFederation" type="radio" name="race"><span class="slider"></span></label> </div>
       <br><button id="nextRace">Confirm</button>
@@ -55,6 +54,7 @@
     <img id="createGroundForce" alt="Criar Ground Force!" src="Graphics_Assets\GroundForce.png"></img>
     <img id="createPDS" alt="Criar PDS!" src="Graphics_Assets\PDS.png"></img>
     <img id="createWarsun" alt="Criar War Sun!" src="Graphics_Assets\Warsun.png"></img>
+    <img id="createFlagship" alt="Criar Flagship!" src="Graphics_Assets\Flagship.png"></img>
     <hr>
     <button id="nextShips">Combat mode</button>
   </section>
@@ -65,7 +65,6 @@
     <button id="resetAttack">Finish Combat</button>
     <button id="makeBombardment">Bombardment</button>
     <button id="antiFighter">Anti Fighter Barrage</button>
-    <button id="xxchaEnemy">Against Xxcha Kingdom</button>
     <button id="dacxive" class="unlockTech">Dacxive Animators</button>
     <button id="reroll" class="unlockTech">Reroll</button>
     <button id="addToSpaceships" class="unlockTech">Spaceships +1</button>
@@ -80,23 +79,31 @@
   <section id="hitsMessage"></section>
 
   <section id="battleships">
-
-    <figure class="damagedShip">
-      <img id="dreadImgDamage" src="Graphics_Assets\Dreadnaught-damaged.png"></img>
-      <figcaption id="dreadFleetDamage"></figcaption>
+    <div class="article">
+    <figure>
+      <img id="flagImg" src="Graphics_Assets\Flagship.png"></img>
+      <figcaption id="flagFleet"></figcaption>
+      <span id="flagHit"></span><span id="flagMiss"></span>
     </figure>
 
+    <figure>
+      <img id="flagImgDamage" src="Graphics_Assets\Flagship-damaged.png"></img>
+      <figcaption id="flagFleetDamage"></figcaption>
+    </figure>
+  </div>
+    <div class="article">
     <figure>
       <img id="dreadImg" src="Graphics_Assets\Dreadnaught.png"></img>
       <figcaption id="dreadFleet"></figcaption>
       <span id="dreadHit"></span><span id="dreadMiss"></span>
     </figure>
 
-    <figure class="damagedShip">
-      <img id="carrierImgDamage" src="Graphics_Assets\Carrier-damaged.png"></img>
-      <figcaption id="carrierFleetDamage"></figcaption>
+    <figure>
+      <img id="dreadImgDamage" src="Graphics_Assets\Dreadnaught-damaged.png"></img>
+      <figcaption id="dreadFleetDamage"></figcaption>
     </figure>
-
+  </div>
+    <div class="article">
     <figure>
       <img id="carrierImg" src="Graphics_Assets\Carrier.png"></img>
       <figcaption id="carrierFleet"></figcaption>
@@ -104,46 +111,57 @@
     </figure>
 
     <figure>
+      <img id="carrierImgDamage" src="Graphics_Assets\Carrier-damaged.png"></img>
+      <figcaption id="carrierFleetDamage"></figcaption>
+    </figure>
+  </div>
+    <div class="article">
+    <figure>
       <img id="cruiserImg" src="Graphics_Assets\Cruiser.png"></img>
       <figcaption id="cruiserFleet"></figcaption>
       <span id="cruiserHit"></span><span id="cruiserMiss"></span>
     </figure>
-
+  </div>
+  <div class="article">
     <figure>
       <img id="destroyerImg" src="Graphics_Assets\Destroyer.png"></img>
       <figcaption id="destroyerFleet"></figcaption>
       <span id="destroyerHit"></span><span id="destroyerMiss"></span>
     </figure>
-
+  </div>
+  <div class="article">
     <figure>
       <img id="fighterImg" src="Graphics_Assets\Fighter.png"></img>
       <figcaption id="fighterFleet"></figcaption>
       <span id="fighterHit"></span><span id="fighterMiss"></span>
     </figure>
-
+  </div>
+  <div class="article">
     <figure>
       <img id="groundImg" src="Graphics_Assets\GroundForce.png"></img>
       <figcaption id="groundFleet"></figcaption>
       <span id="groundHit"></span><span id="groundMiss"></span>
     </figure>
-
+  </div>
+  <div class="article">
     <figure>
       <img id="pdsImg" src="Graphics_Assets\PDS.png"></img>
       <figcaption id="pdsFleet"></figcaption>
       <span id="pdsHit"></span><span id="pdsMiss"></span>
     </figure>
-
-    <figure class="damagedShip">
-      <img id="warImgDamage" src="Graphics_Assets\Warsun-damaged.png"></img>
-      <figcaption id="warFleetDamage"></figcaption>
-    </figure>
-
+  </div>
+    <div class="article">
     <figure>
       <img id="warImg" src="Graphics_Assets\Warsun.png"></img>
       <figcaption id="warFleet"></figcaption>
       <span id="warHit"></span><span id="warMiss"></span>
     </figure>
 
+    <figure>
+      <img id="warImgDamage" src="Graphics_Assets\Warsun-damaged.png"></img>
+      <figcaption id="warFleetDamage"></figcaption>
+    </figure>
+  </div>
   </section>
 
 </body>

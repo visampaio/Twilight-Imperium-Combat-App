@@ -1,4 +1,4 @@
-#dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg, #warImgDamage, #dreadImgDamage, #carrierImgDamage {
+#flagImg, #flagImgDamage, #dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg, #warImgDamage, #dreadImgDamage, #carrierImgDamage {
   display: none;
 }
 
@@ -8,6 +8,10 @@ font-size: 80px;
 margin: 0 auto;
 text-align: center;
 
+}
+
+div .article {
+  display: block;
 }
 
 section, div.list, .unlockTech {
@@ -31,19 +35,21 @@ figure {
   margin: 0;
   padding: 0;
   font-size: 2em;
+  display: inline-block
 }
 
 img {
   padding: 0 10px;
   height: 160px;
   width: auto;
+  display: inline-block;
 }
 
 button {
   font-size: 2em;
 }
 
-.damagedShip {
+.inlineship {
   float: left;
 }
 

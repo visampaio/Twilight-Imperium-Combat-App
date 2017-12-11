@@ -64,6 +64,14 @@ function PDS(battle) {
     this.missSpan ="pdsMiss";
 }
 
+function flagship(battle,dice) {
+    this.battle = battle;
+    this.dice = dice;
+    this.miss = 0;
+    this.hitSpan ="flagHit";
+    this.missSpan ="flagMiss";
+}
+
 // Essa seção é responsavel por definir qual o valor de combate inicial de cada nave. Ta aqui fora pra permitir modificações desses valores por conta de efeitos que podem ser invocados //
 
 var dreadHit = 5;
@@ -74,7 +82,10 @@ var fighterHit = 9;
 var warsunHit = 3;
 var groundforceHit = 8;
 var pdsHit = 6;
+var flaghit;
 
+var flagnormal = 0;
+var flagdamage = 0;
 var dreadnormal = 0;
 var dreaddamage = 0;
 var warnormal = 0;
@@ -102,6 +113,7 @@ var fighterShips = [];
 var warsunShips = [];
 var groundShips = [];
 var pdsShips = [];
+var flagShips = [];
 
 // Contador para display de todos os hits combinados das naves para saber quantas casualidades aconteceram //
 
@@ -109,7 +121,7 @@ var hitTotal = 0;
 
 // Changes what sections are being shown on each screen
 
-  document.getElementById("nextRace").onclick = function() {
+    document.getElementById("nextRace").onclick = function() {
     document.getElementById("chooseRace").style.display = "none";
     document.getElementById("chooseTech").style.display = "block";
     document.getElementById("chooseRaceTech").style.display = "block";
@@ -204,6 +216,14 @@ var hitTotal = 0;
     document.getElementById("warImg").style.display = "inline";
     document.getElementById("warFleet").style.display = "inline";
     document.getElementById("warFleet").innerHTML = "<b>" + warnormal + "</b>";
+  }
+  document.getElementById("createFlagship").onclick = function() {
+    var newShip = new flagship(flagHit);
+    flagnormal++;
+    flagShips.push(newShip);
+    document.getElementById("flagImg").style.display = "inline";
+    document.getElementById("flagFleet").style.display = "inline";
+    document.getElementById("flagFleet").innerHTML = "<b>" + flagnormal + "</b>";
   }
 
 //  runs attack() for each type of ship and shows total successful hits
@@ -550,9 +570,9 @@ document.getElementById("addToGroundForces").onclick = function() {
   changeBattleValue(pdsShips, "-", 2);
 }
 
-document.getElementById("xxchaEnemy").onclick = function() {
-  againstXxcha = true;
-}
+// document.getElementById("xxchaEnemy").onclick = function() {
+//   againstXxcha = true;
+// }
 
 document.getElementById("yinRoll").onclick = function() {
   if (document.getElementById("fanaticism").checked) {var j = 2;}
@@ -687,6 +707,27 @@ document.getElementById("yinRoll").onclick = function() {
       document.getElementById("warFleetDamage").style.display = "none";
     }
   }
+  document.getElementById("flagImg").onclick = function() {
+    flagnormal--;
+    document.getElementById("flagFleet").innerHTML = "<b>" + flagnormal + "</b>";
+    flagdamage++;
+    document.getElementById("flagImgDamage").style.display = "inline";
+    document.getElementById("flagFleetDamage").style.display = "inline";
+    document.getElementById("flagFleetDamage").innerHTML = "<b>" + flagdamage + "</b>";
+    if (flagnormal < 1) {
+      document.getElementById("flagImg").style.display = "none"
+      document.getElementById("flagFleet").style.display = "none";
+    }
+  }
+  document.getElementById("flagImgDamage").onclick = function() {
+    flagShips.pop();
+    flagdamage--;
+    document.getElementById("flagFleetDamage").innerHTML = "<b>" + flagdamage + "</b>";
+    if (flagdamage < 1) {
+      document.getElementById("flagImgDamage").style.display = "none"
+      document.getElementById("flagFleetDamage").style.display = "none";
+    }
+  }
 
 var attack = function(ships){
   if (ships.length > 0) {
@@ -716,7 +757,7 @@ var attack = function(ships){
 }
 
 var reset = function(){
-  var elements = document.querySelectorAll("#dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
+  var elements = document.querySelectorAll("#flagImg, #flagFleet, #flagImgDamage, #flagFleetDamage, #dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
     for (var i=0; i < elements.length; i++) {
       elements[i].style.display = "none";
     }
@@ -729,12 +770,15 @@ var reset = function(){
   warsunShips = [];
   groundShips = [];
   pdsShips = [];
+  flagShips = [];
   dreadnormal = 0;
   dreaddamage = 0;
   warnormal = 0;
   wardamage = 0;
   carriernormal = 0;
   carrierdamage = 0;
+  flagnormal = 0;
+  flagdamage = 0;
   round = 0;
   resurrect = 0;
   document.getElementById("xxchaEnemy").disabled = false;
@@ -758,7 +802,7 @@ var totalReset = function (){
 }
 
 var resetDiceValues = function() {
-  var shipDices = document.querySelectorAll("#dreadHit, #dreadMiss, #cruiserHit, #cruiserMiss, #carrierHit, #carrierMiss, #destroyerHit, #destroyerMiss, #fighterHit, #fighterMiss, #groundHit, #groundMiss, #pdsHit, #pdsMiss, #warHit, #warMiss");
+  var shipDices = document.querySelectorAll("#flagHit, #flagMiss,#dreadHit, #dreadMiss, #cruiserHit, #cruiserMiss, #carrierHit, #carrierMiss, #destroyerHit, #destroyerMiss, #fighterHit, #fighterMiss, #groundHit, #groundMiss, #pdsHit, #pdsMiss, #warHit, #warMiss");
     for (var i=0; i< shipDices.length; i++) {
       shipDices[i].innerHTML = "";
     }
