@@ -162,6 +162,7 @@ var hitTotal = 0;
     var newShip = new dreadnought(dreadHit);
     dreadnormal++;
     dreadShips.push(newShip);
+    document.getElementById("divdreadships").style.display = "block";
     document.getElementById("dreadImg").style.display = "inline";
     document.getElementById("dreadFleet").style.display = "inline";
     document.getElementById("dreadFleet").innerHTML = "<b>" + dreadnormal + "</b>";
@@ -170,6 +171,7 @@ var hitTotal = 0;
     var newShip = new carrier(carrierHit);
     carriernormal++;
     carrierShips.push(newShip);
+    document.getElementById("divcarrierships").style.display = "block";
     document.getElementById("carrierImg").style.display = "inline";
     document.getElementById("carrierFleet").style.display = "inline";
     document.getElementById("carrierFleet").innerHTML = "<b>" + carriernormal + "</b>";
@@ -177,6 +179,7 @@ var hitTotal = 0;
   document.getElementById("createCruiser").onclick = function() {
     var newShip = new cruiser(cruiserHit);
     cruiserShips.push(newShip);
+    document.getElementById("divcruiserships").style.display = "block";
     document.getElementById("cruiserImg").style.display = "inline";
     document.getElementById("cruiserFleet").style.display = "inline";
     document.getElementById("cruiserFleet").innerHTML = "<b>" + cruiserShips.length + "</b>";
@@ -184,6 +187,7 @@ var hitTotal = 0;
   document.getElementById("createDestroyer").onclick = function() {
     var newShip = new destroyer(destroyerHit);
     destroyerShips.push(newShip);
+    document.getElementById("divdestroyerships").style.display = "block";
     document.getElementById("destroyerImg").style.display = "inline";
     document.getElementById("destroyerFleet").style.display = "inline";
     document.getElementById("destroyerFleet").innerHTML = "<b>" + destroyerShips.length + "</b>";
@@ -191,6 +195,7 @@ var hitTotal = 0;
   document.getElementById("createFighter").onclick = function() {
     var newShip = new fighter(fighterHit);
     fighterShips.push(newShip);
+    document.getElementById("divfighterships").style.display = "block";
     document.getElementById("fighterImg").style.display = "inline";
     document.getElementById("fighterFleet").style.display = "inline";
     document.getElementById("fighterFleet").innerHTML = "<b>" + fighterShips.length + "</b>";
@@ -198,6 +203,7 @@ var hitTotal = 0;
   document.getElementById("createGroundForce").onclick = function() {
     var newShip = new groundforce(groundforceHit);
     groundShips.push(newShip);
+    document.getElementById("divground").style.display = "block";
     document.getElementById("groundImg").style.display = "inline";
     document.getElementById("groundFleet").style.display = "inline";
     document.getElementById("groundFleet").innerHTML = "<b>" + groundShips.length + "</b>";
@@ -205,6 +211,7 @@ var hitTotal = 0;
   document.getElementById("createPDS").onclick = function() {
     var newShip = new PDS(pdsHit);
     pdsShips.push(newShip);
+    document.getElementById("divpds").style.display = "block";
     document.getElementById("pdsImg").style.display = "inline";
     document.getElementById("pdsFleet").style.display = "inline";
     document.getElementById("pdsFleet").innerHTML = "<b>" + pdsShips.length + "</b>";
@@ -213,6 +220,7 @@ var hitTotal = 0;
     var newShip = new warsun(warsunHit);
     warnormal++;
     warsunShips.push(newShip);
+    document.getElementById("divwarships").style.display = "block";
     document.getElementById("warImg").style.display = "inline";
     document.getElementById("warFleet").style.display = "inline";
     document.getElementById("warFleet").innerHTML = "<b>" + warnormal + "</b>";
@@ -221,6 +229,7 @@ var hitTotal = 0;
     var newShip = new flagship(flagHit);
     flagnormal++;
     flagShips.push(newShip);
+    document.getElementById("divflagships").style.display = "block";
     document.getElementById("flagImg").style.display = "inline";
     document.getElementById("flagFleet").style.display = "inline";
     document.getElementById("flagFleet").innerHTML = "<b>" + flagnormal + "</b>";
@@ -611,6 +620,9 @@ document.getElementById("yinRoll").onclick = function() {
       document.getElementById("dreadImgDamage").style.display = "none"
       document.getElementById("dreadFleetDamage").style.display = "none";
     }
+    if (dreaddamage < 1 && dreadnormal <1) {
+      document.getElementById("divdreadships").style.display = "none";
+    }
   }
   document.getElementById("carrierImg").onclick = function() {
     carriernormal--;
@@ -627,6 +639,12 @@ document.getElementById("yinRoll").onclick = function() {
       document.getElementById("carrierImg").style.display = "none"
       document.getElementById("carrierFleet").style.display = "none";
     }
+
+    if (carriernormal < 1 && document.getElementById("advancedCarrier").checked == false) {
+      document.getElementById("carrierImg").style.display = "none"
+      document.getElementById("carrierFleet").style.display = "none";
+      document.getElementById("divcarrierships").style.display = "none";
+    }
   }
   document.getElementById("carrierImgDamage").onclick = function() {
     carrierShips.pop();
@@ -636,6 +654,9 @@ document.getElementById("yinRoll").onclick = function() {
       document.getElementById("carrierImgDamage").style.display = "none"
       document.getElementById("carrierFleetDamage").style.display = "none";
     }
+    if (carrierdamage < 1 && carriernormal < 1) {
+      document.getElementById("divcarrierships").style.display = "none";
+    }
   }
   document.getElementById("cruiserImg").onclick = function() {
     cruiserShips.pop();
@@ -643,6 +664,7 @@ document.getElementById("yinRoll").onclick = function() {
     if (cruiserShips.length < 1) {
       document.getElementById("cruiserImg").style.display = "none"
       document.getElementById("cruiserFleet").style.display = "none";
+      document.getElementById("divcruiserships").style.display = "none";
     }
   }
   document.getElementById("destroyerImg").onclick = function() {
@@ -651,6 +673,7 @@ document.getElementById("yinRoll").onclick = function() {
     if (destroyerShips.length < 1) {
       document.getElementById("destroyerImg").style.display = "none"
       document.getElementById("destroyerFleet").style.display = "none";
+      document.getElementById("divdestroyerships").style.display = "none";
     }
   }
   document.getElementById("fighterImg").onclick = function() {
@@ -659,6 +682,7 @@ document.getElementById("yinRoll").onclick = function() {
     if (fighterShips.length < 1) {
       document.getElementById("fighterImg").style.display = "none"
       document.getElementById("fighterFleet").style.display = "none";
+      document.getElementById("divfighterships").style.display = "none";
     }
   }
   document.getElementById("groundImg").onclick = function() {
@@ -676,6 +700,7 @@ document.getElementById("yinRoll").onclick = function() {
     if (groundShips.length < 1) {
       document.getElementById("groundImg").style.display = "none"
       document.getElementById("groundFleet").style.display = "none";
+      document.getElementById("divground").style.display = "none";
     }
   }
   document.getElementById("pdsImg").onclick = function() {
@@ -684,6 +709,7 @@ document.getElementById("yinRoll").onclick = function() {
     if (pdsShips.length < 1) {
       document.getElementById("pdsImg").style.display = "none"
       document.getElementById("pdsFleet").style.display = "none";
+      document.getElementById("divpds").style.display = "none";
     }
   }
   document.getElementById("warImg").onclick = function() {
@@ -706,6 +732,9 @@ document.getElementById("yinRoll").onclick = function() {
       document.getElementById("warImgDamage").style.display = "none"
       document.getElementById("warFleetDamage").style.display = "none";
     }
+    if (wardamage < 1 && warnormal <1) {
+      document.getElementById("divwarships").style.display = "none";
+    }
   }
   document.getElementById("flagImg").onclick = function() {
     flagnormal--;
@@ -726,6 +755,9 @@ document.getElementById("yinRoll").onclick = function() {
     if (flagdamage < 1) {
       document.getElementById("flagImgDamage").style.display = "none"
       document.getElementById("flagFleetDamage").style.display = "none";
+    }
+    if (flagdamage < 1 && flagnormal <1) {
+      document.getElementById("divflagships").style.display = "none";
     }
   }
 

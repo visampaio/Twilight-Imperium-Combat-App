@@ -1,4 +1,4 @@
-#flagImg, #flagImgDamage, #dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg, #warImgDamage, #dreadImgDamage, #carrierImgDamage {
+#divflagships, #divdreadships, #divcarrierships, #divcruiserships, #divdestroyerships, #divfighterships, #divground, #divpds, #divwarships, #flagImg, #flagImgDamage, #dreadImg, #carrierImg, #cruiserImg, #destroyerImg, #fighterImg, #groundImg, #pdsImg, #warImg, #warImgDamage, #dreadImgDamage, #carrierImgDamage {
   display: none;
 }
 
@@ -10,8 +10,9 @@ text-align: center;
 
 }
 
-div .article {
-  display: block;
+#battleships {
+  width: 100%;
+  text-align: center;
 }
 
 section, div.list, .unlockTech {
