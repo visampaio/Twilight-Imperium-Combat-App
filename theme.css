@@ -45,12 +45,16 @@ img {
   width: auto;
   display: inline-block;
   user-drag: none;
-user-select: none;
--moz-user-select: none;
--webkit-user-drag: none;
--webkit-user-select: none;
--ms-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
+
+/*img:focus {
+  border-color: blue;
+}*/
 
 button {
   font-size: 2em;

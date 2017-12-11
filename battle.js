@@ -788,7 +788,7 @@ var attack = function(ships){
   console.log("Hits:" + hitCount);
 }
 
-var reset = function(){
+var reset = function() {
   var elements = document.querySelectorAll("#flagImg, #flagFleet, #flagImgDamage, #flagFleetDamage, #dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
     for (var i=0; i < elements.length; i++) {
       elements[i].style.display = "none";
@@ -813,7 +813,7 @@ var reset = function(){
   flagdamage = 0;
   round = 0;
   resurrect = 0;
-  document.getElementById("xxchaEnemy").disabled = false;
+  // document.getElementById("xxchaEnemy").disabled = false;
   document.getElementById("yinRoll").disabled = false;
 }
 
