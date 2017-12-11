@@ -52,9 +52,14 @@ img {
   -ms-user-select: none;
 }
 
-/*img:focus {
-  border-color: blue;
-}*/
+img.race {
+  padding: 0px;
+  width: auto;
+}
+
+.race:focus {
+    outline: 3px solid #e67e22;
+}
 
 button {
   font-size: 2em;
@@ -94,7 +99,7 @@ div.tech, div.race {
   display: inline-block;
 }
 
-.tech:hover, .race:hover {background-color: #D3D3D3;}
+/*.tech:hover, .race:hover {background-color: #D3D3D3;}*/
 
 /* Botão toggle do W3Schools */
 
