@@ -789,7 +789,7 @@ var attack = function(ships){
 }
 
 var reset = function() {
-  var elements = document.querySelectorAll("#flagImg, #flagFleet, #flagImgDamage, #flagFleetDamage, #dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
+  var elements = document.querySelectorAll("#divdreadships, #divcarrierships, #divcruiserships, #divdestroyerships, #divfighterships, #divground, #divpds, #divwarships, #divflagships, #flagImg, #flagFleet, #flagImgDamage, #flagFleetDamage, #dreadImg, #dreadFleet, #dreadImgDamage, #dreadFleetDamage, #carrierImg, #carrierFleet, #cruiserImg, #cruiserFleet, #destroyerImg, #destroyerFleet, #fighterImg, #fighterFleet, #groundImg, #groundFleet, #pdsImg, #pdsFleet, #warImg, #warFleet, #warImgDamage, #warFleetDamage, #preDread, #currentRound, #resurrectedTroops, #hitsMessage");
     for (var i=0; i < elements.length; i++) {
       elements[i].style.display = "none";
     }

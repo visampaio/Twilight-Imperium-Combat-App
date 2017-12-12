@@ -57,6 +57,15 @@ img.race {
   width: auto;
 }
 
+figcaption {
+  position: relative;
+  top: -131px;
+  left:-50px;
+  color: white;
+  font-family: monospace;
+
+}
+
 .race:focus {
     outline: 3px solid #e67e22;
 }
